@@ -11,14 +11,14 @@
 
   def new
     @comment = Comment.new
-    #if params[:project_id]
-    #@comment = @project.comments.build
+    if params[:project_id]
+    @comment = @project.comments.build
     respond_to do |f|
       f.html {render 'comments/new', :layout => false}
       f.json {render json: @comment}
       end
       #render json: @comment
-    #end
+    end
   end
 
   def create

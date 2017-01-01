@@ -1,5 +1,4 @@
 $(document).ready(function(){
-//compileNewContractorTemplate();
 newContractor();
 createContractor();
 showContractor();
@@ -10,7 +9,6 @@ indexContractors();
 
 let contractorProjectList = {contractors: [], projects: []}
 let contractorId = 0
-// let projectId = 0
 
 
 class Contractor {
@@ -31,35 +29,14 @@ class Contractor {
   }
 }
 
-  // projects() {
-  //   return contractorProjectList.projects.filter(function(project) {
-  //     return project.contractorId = this.id
-  //   }.bind(this))
-  // }
-
-    
-
-
-
-
-// function compileNewContractorTemplate(){
-//     //debugger
-//    var newContractorSource = $("a.ajax_new_contractor").html();
-//      //debugger
-//      if (newContractorSource !== undefined) {
-//     var template = Handlebars.compile($("#newContractorTemplate").html()); 
-//    }
-// }
+  
 
 function newContractor() {
   $("a.ajax_new_contractor").on("click", function(e) {
     $("div.new-ajax-contractor").empty()
     $("div.contractors ol").empty()
     $.get('/contractors/new', function(resp) {
-      //debugger
-       //var contractor = new Contractor(resp)
        $("div.new-ajax-contractor").append(resp).val()
-      //debugger
     })
     
     e.preventDefault()
@@ -69,18 +46,13 @@ function newContractor() {
 
 function createContractor(){
  $(document).on("submit", "#new_contractor", function(e) {
-   //alert("Hey")
     $.ajax({
       type: 'POST',
       url: this.action,
       data: $(this).serialize(),
-      success: function(response) {
-        
+      success: function(response) {        
         var contractor = new Contractor(response)
-         //var renderContractor = HandlebarsTemplates['/contractor/new_contractor'](contractor)
-
      $("div.contractor-new").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
-         //debugger
         $("div.new-ajax-contractor").empty()
         //$("header").empty()
       }
@@ -99,9 +71,6 @@ function indexContractors(){
           $("div.contractor-new").empty()
           $("div.contractor").empty()
           $("div.contractors ol").append(resp).val()
-      
-         //debugger
-      
       })
     e.preventDefault();
   })
@@ -114,12 +83,15 @@ function indexContractors(){
     
   $.get( $(e.target).attr('href'), function(resp) {
     var contractor = new Contractor(resp)
+    var projectsList = resp.projects;
+      $("div.project-contractors ol").prepend(`<h2>Projects</h2>`);
+      projectsList.forEach(function(data) {
+      $("div.project-contractors ol").append(`<li><h4>Title: ${data.title}</h4> <h4>Contract Number: ${data.contract_number}</h4> <h4>Solicitation Number: ${data.solicitation_number}</h4> <h4>Start Date: ${data.project_start_date}</h4> <h4>End Date: ${data.project_end_date}</h4> <h4>Substantial Completion Date: ${data.substantial_completion_date}</h4> <h4>Project Officer: ${data.project_officer}</h4> <h4>Category: ${data.category}</h4> <h4>Contract Amount: ${data.contract_amount}</h4> <h4>Location: ${data.location}</h4></li>`)
+      });
    $("div.contractor").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
-   //$("div.contractor").append(resp).val()
-   //debugger
+      debugger
    $("div.contractors ol").empty()
    $("header").empty()
-    //debugger
   })
     e.preventDefault();
   })

@@ -1,4 +1,14 @@
 
+class Comments {
+  constructor(project){
+    this.id = ++commentId
+    this.content = attributes.content
+    if (project){
+      this.projectId = project.id
+    }
+  }
+}  
+
 
 $(function() {
   
@@ -10,7 +20,6 @@ $(function() {
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
-          //debugger
         $("div.project").empty()
         $("div.comment").html(response)
         $("header").empty()
@@ -37,4 +46,3 @@ $(function() {
 )
   
 
-  

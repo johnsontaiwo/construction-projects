@@ -7,7 +7,6 @@ $(document).ready(function(){
   
 
   let projectContractorList = {projects: [], comments: [], contractors: []}
-  let commentId = 0
   let projectId = 0
 
 class Project {
@@ -41,7 +40,25 @@ class Project {
 
 }
 
+// class Comments {
+//   constructor(project){
+//     this.id = ++commentId
+//     this.content = attributes.content
+//     if (project){
+//       this.projectId = project.id
+//     }
 
+//     projectContractorList.comments.push(this)
+//   }
+//     projects(){
+//       return projectContractorList.projects.find(function(project){
+//         return project.id === this.projectId
+//       }.bind(this))
+//     }
+//   }  
+
+
+ 
 
 
   function projectList() {
@@ -53,6 +70,7 @@ class Project {
           $("div.project").empty()
           $("div.project-contractors ol").empty()
           $("div.project-comments ol").empty()
+           $("div.contractor").empty()
        })
      
         e.preventDefault()
@@ -63,11 +81,8 @@ class Project {
   $("a.ajax_new_project").on("click", function(e){
     $("div.new-ajax-project").empty()
     $.get("/projects/new", function(resp){
-      //debugger
       $("div.new-ajax-project").append(resp).val()
-      
-    })
-    
+     })    
     e.preventDefault()
     })
   }
@@ -82,8 +97,13 @@ function createProject() {
       data: $(this).serialize(),
       success: function(response) {
         var project = new Project(response)
-        $("div.projects ol").append(`<h4>Title: ${project.title}</h4> <h4>Contract Number: ${project.contract_number}</h4> <h4>Solicitation Number: ${project.solicitation_number}</h4> <h4>Start Date: ${project.project_start_date}</h4> <h4>End Date: ${project.project_end_date}</h4> <h4>Substantial Completion Date: ${project.substantial_completion_date}</h4> <h4>Project Officer: ${project.project_officer}</h4> <h4>Category: ${project.category}</h4> <h4>Contract Amount: ${project.contract_amount}</h4> <h4>Location: ${project.location}</h4>`)
-        //debugger
+        var contractor = project.contractors()
+        var contractorsList = response.contractors;
+        $("div.project-contractors ol").prepend(`<h2>Contractors</h2>`);
+        contractorsList.forEach(function(data) {
+          $("div.project-contractors ol").append( `<h4>Name: ${data.name}</h4> <h4>Adrress: ${data.address}</h4> <h4>Email: ${data.email}</h4> <h4>Group: ${data.group}</h4><br></br>`)
+        }); debugger
+        $("div.projects ol").append(`<h4>Title: ${project.title}</h4> <h4>Contract Number: ${project.contract_number}</h4> <h4>Solicitation Number: ${project.solicitation_number}</h4> <h4>Start Date: ${project.project_start_date}</h4> <h4>End Date: ${project.project_end_date}</h4> <h4>Substantial Completion Date: ${project.substantial_completion_date}</h4> <h4>Project Officer: ${project.project_officer}</h4> <h4>Category: ${project.category}</h4> <h4>Contract Amount: ${project.contract_amount}</h4> <h4>Location: ${project.location}</h4> Name: ${contractor.name}</h4>`)
         $("div.new-ajax-project").empty()
         $("header").empty()
         $("a.new_ajax_comment").hide()
@@ -108,14 +128,11 @@ function createProject() {
       $("div.project-comments ol").append( `<h4>Content: ${data.content}</h4><br></br>`)
       });
       $("div.project").append(`<h4>Title: ${project.title}</h4> <h4>Contract Number: ${project.contract_number}</h4> <h4>Solicitation Number: ${project.solicitation_number}</h4> <h4>Start Date: ${project.project_start_date}</h4> <h4>End Date: ${project.project_end_date}</h4> <h4>Substantial Completion Date: ${project.substantial_completion_date}</h4> <h4>Project Officer: ${project.project_officer}</h4> <h4>Category: ${project.category}</h4> <h4>Contract Amount: ${project.contract_amount}</h4> <h4>Location: ${project.location}</h4>`)
-   
-        //debugger
-      $("div.projects ol").empty()
-      //$("header").empty()
-  
+      $("div.projects ol").empty()  
       $("a.ajax_new_project").hide()
       })
       e.preventDefault();
     })
+
   }
   

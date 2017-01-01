@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
     # f.html {render 'projects/show'}
     # f.json {render json: @project}
     # end
-       render json: @project
+        render json: @project
   end
 
   def edit
