@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  contract_number: MyText
+  solicitation_number: MyText
+  project_officer: MyString
+  start_date: MyText
+  finish_date: MyText
+  substantial_completion_date: MyText
+  contract_amount: MyText
+  location: MyText
+
+two:
+  title: MyString
+  contract_number: MyText
+  solicitation_number: MyText
+  project_officer: MyString
+  start_date: MyText
+  finish_date: MyText
+  substantial_completion_date: MyText
+  contract_amount: MyText
+  location: MyText
