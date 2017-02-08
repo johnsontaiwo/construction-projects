@@ -1,0 +1,19 @@
+<%= form_for @contractor do |f| %>
+<p>
+<%= f.label :name %>
+<%= f.text_field :name %>
+</p>
+
+<p>
+  <%= f.label :address %>
+  <%= f.text_area :address %>
+</p>
+
+<p>
+  <%= f.label :telephone %>
+  <%= f.text_field :telephone %>
+</p>
+
+<%= f.submit 'Create a new contractor' %>
+
+<% end %>

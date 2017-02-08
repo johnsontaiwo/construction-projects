@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131175111) do
+ActiveRecord::Schema.define(version: 20170204215307) do
 
   create_table "contractor_projects", force: :cascade do |t|
     t.integer  "contractor_id"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20170131175111) do
 
   create_table "contractors", force: :cascade do |t|
     t.string   "name"
-    t.integer  "tax_id"
     t.integer  "telephone"
     t.string   "address"
     t.datetime "created_at", null: false
@@ -36,14 +35,15 @@ ActiveRecord::Schema.define(version: 20170131175111) do
     t.text     "contract_number"
     t.text     "solicitation_number"
     t.string   "project_officer"
-    t.text     "start_date"
-    t.text     "finish_date"
     t.text     "substantial_completion_date"
     t.text     "contract_amount"
     t.text     "location"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "contractor_id"
+    t.string   "type"
+    t.integer  "project_start_date"
+    t.integer  "project_end_date"
   end
 
   create_table "users", force: :cascade do |t|
