@@ -26,10 +26,10 @@
 <%=  f.date_select(:project_start_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}) %>  <br /></br>
 
 <%= f.label :project_end_date %>
-<%= f.date_select :project_end_date %><br /></br>
+<%= f.date_select :project_end_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'} %><br /></br>
 
 <%= f.label :substantial_completion_date %>
-<%= f.date_select :substantial_completion_date %><br /></br>
+<%= f.date_select :substantial_completion_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'} %><br /></br>
 
 <%= f.label :contract_amount %>
 <%= f.text_field :contract_amount %></br></br>

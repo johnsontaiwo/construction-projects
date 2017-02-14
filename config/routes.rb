@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :contractor_projects
-  resources :projects
+  resources :projects do
+    resources :comments, except: [:index] 
+  end
   resources :contractors
   root 'welcome#home'
 

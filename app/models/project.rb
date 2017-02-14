@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  has_many :comments
   has_many :contractor_projects
   has_many :contractors, through: :contractor_projects
   #has_many :sub_contractors, through: :contractor_projects, source: :contractors

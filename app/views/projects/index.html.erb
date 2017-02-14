@@ -1,1 +1,5 @@
-<%= render :partial => 'form' %>
+<% @projects.each do |p| %>
+<li>
+<%= link_to "#{p.title}", project_path(p) %>
+</li>
+<%end%>

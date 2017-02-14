@@ -1,5 +1,5 @@
 <h1><% @contractors.all.each do |contractor| %></h1>
       <li>
-      <%= contractor.name %>
+      <%= link_to " #{contractor.name}", contractor_path(contractor)%>
       </li>
       <% end %>

@@ -1,2 +1,13 @@
-<%= @project.title %>
+<%= @project.title %><br> </br>
 
+<%= @project.location %><br> </br>
+ <strong>Comments</strong>
+<% @project.comments.each do |comment| %>
+  <li>
+  <%= comment.content %>
+  </li>
+ <% end %>
+ <br></br>
+<%= link_to "New comment", new_project_comment_path(@project) %>
+
+<%# end %>

@@ -18,6 +18,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def show
+    @comment = @project.comments
+  end
+
   def edit
 
   end
@@ -34,7 +38,7 @@ class ProjectsController < ApplicationController
 
 
 def set_project
-  @project = Project.find(params[:id])
+  @project = Project.find_by(:id => params[:id])
 end
 
 def project_params
