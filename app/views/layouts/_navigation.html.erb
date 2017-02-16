@@ -4,7 +4,8 @@
       <%= link_to "Home", root_path %><br></br>
         <% if user_signed_in? %>
         <%= link_to "Sign out", destroy_user_session_path, method: "delete" %><br></br>
-        <%= link_to "Signed in as #{current_user.email}", user_session_path %>
+        <%= link_to "Signed in as #{current_user.email}", user_session_path %><br></br>
+        <%= link_to 'Edit your profile', edit_user_registration_path %>
         <% else %>
       <%= link_to "Sign in", new_user_session_path %><br></br>
       <%= link_to "Sign up",  new_user_registration_path %><br></br>

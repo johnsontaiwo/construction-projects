@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+ #before_filter: authenticate
 
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
