@@ -9,8 +9,12 @@
 <%= f.label :title %>
 <%= f.text_field :title %><br /></br>
 
-<%= f.label :type  %>
-<%= f.text_field :type %><br /></br>
+<%#= f.label :category  %>
+<%#= select_tag "category", options_for_select(["cip", "line"]), include_blank: true %>
+<%= f.label :category %>
+<%#= options_for_select([['prime', 1], ['sub', 2], ]) %>
+<%#= f.label :category %>
+<%= f.text_field :category %><br /></br>
 
 <%= f.label :contract_number %>
 <%= f.text_field :contract_number %><br /></br>
@@ -23,13 +27,13 @@
 <%= f.text_field :project_officer %><br /></br>
 
 <%= f.label :project_start_date %>
-<%=  f.date_select(:project_start_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}) %>  <br /></br>
+<%#=  date_select(:project, :project_start_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}) %>  <br /></br>
 
 <%= f.label :project_end_date %>
-<%= f.date_select :project_end_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'} %><br /></br>
+<%#= date_select :project_end_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'} %><br /></br>
 
 <%= f.label :substantial_completion_date %>
-<%= f.date_select :substantial_completion_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'} %><br /></br>
+<%#= date_select :substantial_completion_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'} %><br /></br>
 
 <%= f.label :contract_amount %>
 <%= f.text_field :contract_amount %></br></br>
@@ -37,17 +41,18 @@
 <%= f.label :location %>
 <%= f.text_field :location %><br></br>
 
-        <h2> Prime Contractor </h2>
-
+        
 <%= f.fields_for :contractors, @project.contractors.build do |contractor_fields| %>
 <%= contractor_fields.label :name %>
 <%= contractor_fields.text_field :name %><br></br>
 
 <%= contractor_fields.label :address %>
-<%= contractor_fields.text_field :address %><br></br>
+<%= contractor_fields.text_area :address %><br></br>
 
 <%= contractor_fields.label :telephone %>
 <%= contractor_fields.telephone_field :telephone %>
+<p><strong>Category:</strong>
+<%= select_tag "category", options_for_select(["Prime", "Sub"]), include_blank: true %></p>
 <% end %><br></br>
 
 <%= f.submit "Create a new project" %><br />

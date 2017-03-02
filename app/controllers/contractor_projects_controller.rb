@@ -1,2 +1,0 @@
-class ContractorProjectsController < ApplicationController
-end

@@ -1,7 +1,9 @@
-<h1><%=@contractor.name%></h1>
+<strong>Name:<%=@contractor.name%></strong></br><br>
 
-<%= @contractor.address %>
+<strong> Address: <%= @contractor.address %></strong>
    </br><br>
 <%= @contractor.telephone %></br><br>
 
+<% if current_user.admin?%>
 <%= link_to "Create a new contractor", new_contractor_path %>
+<%end%>

@@ -1,6 +1,6 @@
 class ContractorsController < ApplicationController
  before_action :find_contractor, only: [:show, :edit, :update, :destroy]
- 
+ #skip_before_filter :verify_authenticity_token, :only => :create
  def index
   @contractors = Contractor.all
  end
@@ -10,9 +10,11 @@ class ContractorsController < ApplicationController
  end
 
  def create
+   #raise contractor_params.inspect
+  @projects = Project.all
   @contractor = Contractor.new(contractor_params)
   if @contractor.save
-    redirect_to @contractor 
+    redirect_to  projects_path, notice: "You have successfully signed up as contractor with us"
   else
     render 'new'
   end
@@ -21,8 +23,13 @@ class ContractorsController < ApplicationController
  def show
   
  end
-
+ 
+ def edit
+ end
+ 
  def update
+  @contractor.update(contractor_params)
+  redirect_to @contractor
  end
 
  def destroy

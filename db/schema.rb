@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215005647) do
+ActiveRecord::Schema.define(version: 20170301234758) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20170215005647) do
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -42,15 +41,14 @@ ActiveRecord::Schema.define(version: 20170215005647) do
     t.text     "contract_number"
     t.text     "solicitation_number"
     t.string   "project_officer"
-    t.text     "substantial_completion_date"
     t.text     "contract_amount"
     t.text     "location"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.integer  "contractor_id"
-    t.string   "type"
     t.integer  "project_start_date"
     t.integer  "project_end_date"
+    t.string   "category"
+    t.datetime "substantial_completion_date"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,6 +65,8 @@ ActiveRecord::Schema.define(version: 20170215005647) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "role"
+    t.string   "provider"
+    t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,0 +1,34 @@
+<%= form_for @contractor do |f| %>
+ 
+ <% if @contractor.errors.any? %>
+    <div id="error_explanation">
+       <h2><%= pluralize(@contractor.errors.count, "error") %> prohibited this song from being saved:</h2>
+       <ul>
+         <% @contractor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+       </ul>
+     </div>
+   <% end %>
+
+<p>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+</p>
+
+<p>
+  <%= f.label :address %>
+  <%= f.text_area :address %>
+</p>
+
+<p>
+  <%= f.label :telephone %>
+  <%= f.telephone_field :telephone %>
+</p>
+
+
+<%= f.submit 'Create a new contractor' %>
+
+<% end %>

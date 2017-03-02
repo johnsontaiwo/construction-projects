@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def new
-    @project = Project.new
+   @project = Project.new
+   @contractor = @project.contractors.build
   end
 
   def index
@@ -10,12 +11,15 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    #raise project_params.inspect
+    #@contractor = Contractor.find(params[:contractor_id])
+    @project = Project.create(project_params)
+    #@project.contractors = @contractor
     if @project.save
       redirect_to @project
     else
       render "new"
-    end
+     end
   end
 
   def show
@@ -31,7 +35,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-
+   @project.destroy
+   redirect_to '/'
   end
   
   private
@@ -42,7 +47,7 @@ def set_project
 end
 
 def project_params
-  params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_officer, :finish_date, :substatntial_completion_date, :contract_amount, :location, contractor_ids: [], contractors_attributes: [:name])
+  params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_officer, :category, :contract_amount, :location, :contractor_ids => [], :contractors_attributes => [:name, :address, :telephone])
 end
 
 end

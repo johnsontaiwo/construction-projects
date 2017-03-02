@@ -1,6 +1,26 @@
-<%= @project.title %><br> </br>
+<strong>Title:<%= @project.title %></strong><br> </br>
 
-<%= @project.location %><br> </br>
+<strong>Location:<%= @project.location %></strong><br> </br>
+
+<strong>Contract Number:<%= @project.contract_number %></strong><br> </br>
+
+<strong>Category:<%= @project.category %></strong><br> </br>
+
+<strong>Start date:<%= @project.project_start_date %></strong><br> </br>
+
+<strong>End date:<%= @project.project_end_date %><br> </br>
+
+<strong><%= @project.substantial_completion_date %></strong><br> </br>
+
+<strong>Contract Amount:<%= @project.contract_amount %></strong><br> </br>
+ <% @project.contractors.each do |contractor| %>
+  <strong>Contractor Name:<%="#{contractor.name}"%>
+  <% end %>
+</strong><br> </br>
+
+
+
+<% if current_user.admin?%>
  <strong>Comments</strong>
 <% @project.comments.each do |comment| %>
   <li>
@@ -8,6 +28,7 @@
   </li>
  <% end %>
  <br></br>
+ <%# if current_user.admin?%>
 <%= link_to "New comment", new_project_comment_path(@project) %>
+<% end %>
 
-<%# end %>

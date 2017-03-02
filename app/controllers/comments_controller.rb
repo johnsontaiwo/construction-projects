@@ -16,11 +16,7 @@ class CommentsController < ApplicationController
     if params[:project_id]
     @project = Project.find(params[:project_id])
     @comment = @project.comments.build
-    #Comment.new(project_id: params[:project_id])
-     #raise @project.inspect
-     #binding.pry
-    #redirect_to @comment
-  end
+    end
   end
 
   def create
