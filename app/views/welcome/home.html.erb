@@ -1,6 +1,10 @@
 <h1>Welcome to Construction Projects</h1>
+
 <p>We are here to serve you.</p>
 
-<h3>Listed below is the list of our current projects in progress:</h3>
+<p>If you will like to work with us, please <%= link_to "Sign up as a contractor", new_contractor_path %></p>
 
+<% if user_signed_in? %>
+<h3>Listed below is the list of our current projects in progress:</h3>
 <%= link_to "Click here to see the list of our current projects in progress", projects_path %>
+<% end %>

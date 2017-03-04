@@ -11,11 +11,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    #raise project_params.inspect
-    #@contractor = Contractor.find(params[:contractor_id])
-    @project = Project.create(project_params)
-    #@project.contractors = @contractor
-    if @project.save
+   @project = Project.create(project_params)
+     if @project.save
       redirect_to @project
     else
       render "new"
@@ -47,7 +44,7 @@ def set_project
 end
 
 def project_params
-  params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_officer, :category, :contract_amount, :location, :contractor_ids => [], :contractors_attributes => [:name, :address, :telephone])
+  params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_start_date, :project_end_date, :substantial_completion_date, :project_officer, :category, :contract_amount, :location, :contractor_ids => [], :contractors_attributes => [:name, :address, :telephone])
 end
 
 end

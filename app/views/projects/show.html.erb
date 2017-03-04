@@ -6,13 +6,14 @@
 
 <strong>Category:<%= @project.category %></strong><br> </br>
 
-<strong>Start date:<%= @project.project_start_date %></strong><br> </br>
+<strong>Start date: <%= @project.project_start_date %></strong><br> </br>
 
-<strong>End date:<%= @project.project_end_date %><br> </br>
+<strong>End date: <%= @project.project_end_date %><br> </br>
 
-<strong><%= @project.substantial_completion_date %></strong><br> </br>
+<strong>Substantial completion date: <%= @project.substantial_completion_date%></strong><br> </br>
 
 <strong>Contract Amount:<%= @project.contract_amount %></strong><br> </br>
+         <h3>Contractors' Information</h3>
  <% @project.contractors.each do |contractor| %>
   <strong>Contractor Name:<%="#{contractor.name}"%>
   <% end %>

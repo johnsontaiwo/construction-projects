@@ -12,11 +12,15 @@ class ContractorsController < ApplicationController
  def create
    #raise contractor_params.inspect
   @projects = Project.all
-  @contractor = Contractor.new(contractor_params)
-  if @contractor.save
-    redirect_to  projects_path, notice: "You have successfully signed up as contractor with us"
-  else
+  if current_user
+    @contractor = Contractor.new(contractor_params)
+      if @contractor.save
+        redirect_to  projects_path, notice: "You have successfully signed up as contractor with us"
+      else
     render 'new'
+  end
+  else
+    redirect_to '/', alert: "**You must sign up as a user first.**"
   end
  end
 
