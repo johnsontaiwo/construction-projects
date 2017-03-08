@@ -2,14 +2,12 @@ class Project < ApplicationRecord
   has_many :comments
   has_many :contractor_projects
   has_many :contractors, through: :contractor_projects
-  #has_many :sub_contractors, through: :contractor_projects, source: :contractors
+  
+ validates_presence_of :title, :contract_number, :solicitation_number, :project_start_date, :project_end_date, :substantial_completion_date, :project_officer, :category, :contract_amount, :location
 
   accepts_nested_attributes_for :contractors, reject_if: :all_blank
   
-  #def contractors_attributes(contractors_attributes)
-   #raise contractors_attributes.inspect
-       #contractors_attributes.each do |contractor_attributes|
-      #self.contractors.build(contractor_attributes)
-    #end
-    #end
+     #def project_status
+     #self.where("project_end_date < ?", Date.today) 
+     #end
   end

@@ -2,8 +2,15 @@
 
 <strong> Address: <%= @contractor.address %></strong>
    </br><br>
-<%= @contractor.telephone %></br><br>
+<strong> Telephone:<%= @contractor.telephone %></strong></br><br>
+<strong> Category:<%= @contractor.category %></strong></br><br>
 
+<% if user_signed_in? %>
+<h3>Listed below is the list of our current projects in progress:</h3>
+<% @projects.each do |project| %>
+<%= link_to "#{project.title}", project_path(project)%>
+<% end %>
+<% end %>
 <% if current_user.admin?%>
 <%= link_to "Create a new contractor", new_contractor_path %>
 <%end%>

@@ -15,7 +15,7 @@ class ContractorsController < ApplicationController
   if current_user
     @contractor = Contractor.new(contractor_params)
       if @contractor.save
-        redirect_to  projects_path, notice: "You have successfully signed up as contractor with us"
+        redirect_to  @contractor, notice: "You have successfully signed up as contractor with us"
       else
     render 'new'
   end
@@ -25,10 +25,10 @@ class ContractorsController < ApplicationController
  end
 
  def show
-  
+  @projects = Project.where("project_end_date > ?", Date.today)
  end
  
- def edit
+ def edit 
  end
  
  def update
@@ -46,6 +46,6 @@ class ContractorsController < ApplicationController
  end
 
   def contractor_params
-    params.require(:contractor).permit(:name, :address, :telephone)
+    params.require(:contractor).permit(:name, :address, :telephone, :category)
   end
 end

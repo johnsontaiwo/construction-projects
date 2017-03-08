@@ -15,7 +15,8 @@
 <strong>Contract Amount:<%= @project.contract_amount %></strong><br> </br>
          <h3>Contractors' Information</h3>
  <% @project.contractors.each do |contractor| %>
-  <strong>Contractor Name:<%="#{contractor.name}"%>
+  <strong>Contractor Name:<%="#{contractor.name}"%><br> </br>
+  <strong>Category: <%="#{contractor.category}"%>
   <% end %>
 </strong><br> </br>
 

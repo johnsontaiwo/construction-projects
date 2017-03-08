@@ -27,8 +27,8 @@
   <%= f.label :telephone %>
   <%= f.telephone_field :telephone %>
 </p>
-
-
+ <%= f.label :category %>
+ <%= f.select "category", options_for_select(["Prime", "Sub"]), include_blank: true %></p>
 <%= f.submit 'Sign up' %>
 
 <% end %>

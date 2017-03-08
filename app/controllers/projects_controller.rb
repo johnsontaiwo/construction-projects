@@ -7,7 +7,8 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all
+   @projects = Project.all
+   #raise @projects.inspect
   end
 
   def create
@@ -44,7 +45,7 @@ def set_project
 end
 
 def project_params
-  params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_start_date, :project_end_date, :substantial_completion_date, :project_officer, :category, :contract_amount, :location, :contractor_ids => [], :contractors_attributes => [:name, :address, :telephone])
+  params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_start_date, :project_end_date, :substantial_completion_date, :project_officer, :category, :contract_amount, :location, :contractor_ids => [], :contractors_attributes => [:name, :address, :telephone, :category])
 end
 
 end

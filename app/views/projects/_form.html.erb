@@ -45,6 +45,7 @@
 <%= f.text_field :location %><br></br>
 
         <h3>Contractor's information</h3>
+
 <%= f.fields_for :contractors, @project.contractors.build do |contractor_fields| %>
 <%= contractor_fields.label :name %>
 <%= contractor_fields.text_field :name %><br></br>
@@ -54,8 +55,9 @@
 
 <%= contractor_fields.label :telephone %>
 <%= contractor_fields.telephone_field :telephone %>
-<p><strong>Category:</strong>
-<%= select_tag "category", options_for_select(["Prime", "Sub"]), include_blank: true %></p>
+
+<%= contractor_fields.label :category %>
+<%= contractor_fields.select "category", options_for_select(["Prime", "Sub"]), include_blank: true %></p>
 <% end %><br></br>
 
 <%= f.submit "Create a new project" %><br />
