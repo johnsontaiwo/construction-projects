@@ -1,16 +1,24 @@
-<strong>Name:<%=@contractor.name%></strong></br><br>
+<h3>Name:<%=@contractor.name%></h3>
 
-<strong> Address: <%= @contractor.address %></strong>
+<h3> Address: <%= @contractor.address %></h3>
+   
+<h3> Email: <%= @contractor.email %></h3>
+  
+<h3> Group: <%= @contractor.group %></h3>
    </br><br>
-<strong> Telephone:<%= @contractor.telephone %></strong></br><br>
-<strong> Category:<%= @contractor.category %></strong></br><br>
 
 <% if user_signed_in? %>
-<h3>Listed below is the list of our current projects in progress:</h3>
-<% @projects.each do |project| %>
-<%= link_to "#{project.title}", project_path(project)%>
-<% end %>
-<% end %>
+
+<h5>Listed below is the list of our current projects in progress:</h5>
+  <% @projects.each do |project| %>
+  <%= link_to "#{project.title}", project_path(project)%>
+  <% end %>
+
+<% end %><br></br> 
+
 <% if current_user.admin?%>
-<%= link_to "Create a new contractor", new_contractor_path %>
+
+  <%= link_to "Edit contractor", edit_contractor_path(@contractor)  %><br></br>
+  <%= link_to "Delete contractor", contractor_path(@contractor), :data => {:confirm => "Are You sure?", :method => "delete"}%>
+
 <%end%>

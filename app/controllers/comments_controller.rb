@@ -1,77 +1,66 @@
-  #require 'pry'
-class CommentsController < ApplicationController
-  #before_action :find_project, only: [:new, :index, :edit, :show, :update, :destroy]
+ class CommentsController < ApplicationController
+  before_action :find_project
   
   def index
+    @projects = Project.all
     if params[:project_id]
-    @project = Project.find_by(:id => params[:project_id])
-    @comments = project.comments.all
-    redirect_to @comments
-    #raise @comments.inspect
+      @comments = @project.comments.all
+      redirect_to @comments
+    end
   end
- end
+
 
 
   def new
+    @comment = Comment.new
     if params[:project_id]
-    @project = Project.find(params[:project_id])
     @comment = @project.comments.build
     end
   end
 
   def create
-  if params[:project_id]
-   @project = Project.find(params[:project_id])
-   #raise @project.inspect
-   @comment = @project.comments.create(comment_params)
-    #if @comment.save
+    if params[:project_id]
+      @comment = @project.comments.create(comment_params)
+      if @comment.save
       redirect_to @project
-    #else
-      #render "new"
-    #end
-   end
+      else
+      render "new"
+      end
+    end
   end
 
   def show
-    #if params[:project_id]
-    project = Project.find_by(:id => params[:id])
-    #raise project.inspect
-    @comment = project.comments.find_by(:id => params[:id])
-    #raise @comment.inspect
-  #end
+    if params[:project_id]
+      @comment = @project.comments.find_by(:id => params[:id])
+    end
   end
   
   def edit
-    @comment = project.comments.find_by(:id => params[:id])
+    @comment = @project.comments.find_by(:id => params[:id])
   end
 
   def update
-    @comment = project.comments.find_by(:id => params[:id])
-    @comment.update(comment_params)
-    if @comment.save
-      redirect_to @comment 
-    else
-      render "edit"
+    if params[:project_id]
+      @comment = @project.comments.find(params[:id])
+      if @comment.update_attributes(comment_params)
+        redirect_to @project, notice: "Comment updated"
+      else
+        render "edit", notice: "You cannot update the comment"
+      end
     end
   end
 
   def destroy
-    @comment = project.comments.find_by(:id => params[:id])
+    @comment = @project.comments.find_by(:id => params[:id])
     @comment.destroy
     flash[:notice] = "Comment has been successfully deleted"
-    redirect_to @comment
+    redirect_to @project
   end
-
-
-
-
-
-
 
   private
   
   def find_project
-    #project =  Project.find(params[:id])
+    @project = Project.find_by(:id => params[:project_id])
   end
   
   def comment_params

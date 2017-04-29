@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
  gem 'pundit'
  gem 'omniauth'
  gem 'omniauth-facebook'
+ gem "bootstrap-sass", "~> 3.1.1"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

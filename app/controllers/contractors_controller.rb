@@ -1,51 +1,53 @@
 class ContractorsController < ApplicationController
  before_action :find_contractor, only: [:show, :edit, :update, :destroy]
  #skip_before_filter :verify_authenticity_token, :only => :create
- def index
-  @contractors = Contractor.all
- end
+  def index
+    @contractors = Contractor.all
+  end
 
- def new
-  @contractor = Contractor.new
- end
+  def new
+    @contractor = Contractor.new
+  end
 
- def create
-   #raise contractor_params.inspect
-  @projects = Project.all
-  if current_user
-    @contractor = Contractor.new(contractor_params)
-      if @contractor.save
-        redirect_to  @contractor, notice: "You have successfully signed up as contractor with us"
+  def create
+    @projects = Project.all
+    if current_user
+      @contractor = Contractor.create(contractor_params)
+      current_user = @contractor
+      if  @contractor.save
+          redirect_to  @contractor, notice: "You have successfully signed up as contractor with us"
       else
-    render 'new'
+        render 'new', alert: "Your email does not match "
+     end
+    else
+      redirect_to '/', alert: "**You must sign up as a user first.**"
+    end
   end
-  else
-    redirect_to '/', alert: "**You must sign up as a user first.**"
+
+  def show
+    @projects = Project.where("project_end_date > ?", Date.today)
   end
- end
-
- def show
-  @projects = Project.where("project_end_date > ?", Date.today)
- end
  
- def edit 
- end
+  def edit 
+  end
  
- def update
-  @contractor.update(contractor_params)
-  redirect_to @contractor
- end
+  def update
+    @contractor.update(contractor_params)
+    redirect_to @contractor
+  end
 
- def destroy
- end
+  def destroy
+    @contractor.destroy
+    redirect_to '/'
+  end
 
  private
 
- def find_contractor
-  @contractor = Contractor.find(params[:id])
- end
+  def find_contractor
+    @contractor = Contractor.find(params[:id])
+  end
 
   def contractor_params
-    params.require(:contractor).permit(:name, :address, :telephone, :category)
+    params.require(:contractor).permit(:name, :address, :email, :group,)
   end
 end

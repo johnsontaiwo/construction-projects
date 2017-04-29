@@ -1,8 +1,7 @@
-class UsersController < ApplicationController
+ class UsersController < ApplicationController
 
    def new
     @user = User.new
-    #authorize @user
   end
 
   def index 
@@ -12,16 +11,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if !current_user.admin? || current_user != @user
-      end
-    authorize @user
+    authorize @user if !current_user.admin? || current_user != @user
   end
 
   def edit
     @user = User.find(params[:id])
-    if !current_user.admin? || current_user != @user
-      end
-    authorize @user
-   end
+    authorize @user if !current_user.admin? || current_user != @user
+  end
 
 end

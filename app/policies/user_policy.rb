@@ -13,11 +13,11 @@ attr_reader :current_user, :model
   end
 
   def edit?
-     @current_user.admin? || @current_user == @user
+    @current_user.admin? || @current_user == @user
   end
 
   def show?
-     @current_user.admin? || @current_user == @user
+    @current_user.admin? || @current_user == @user
   end
 
   def update?

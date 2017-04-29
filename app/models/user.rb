@@ -1,16 +1,20 @@
 class User < ApplicationRecord
- #before_filter: authenticate
-validates :email, presence: true
-validates :password, presence: true
+  
+  #before_filter: authenticate
+  validates :email, presence: true
+  validates :password, presence: true
   
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
 
-    def set_default_role
-      self.role ||= :user
-    end
+  def set_default_role
+    self.role ||= :user
+  end
     
+  
+  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,  
@@ -26,5 +30,6 @@ validates :password, presence: true
       user.password = Devise.friendly_token[0,20]
     end      
   end
+
 end
 

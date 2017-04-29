@@ -1,1 +1,2 @@
-<%= render 'form' %>
+<%= @comment.content %>
+<%= link_to "Delete comment", project_comment_path(@comment), :method => :delete%>

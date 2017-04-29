@@ -2,14 +2,28 @@
 
 <p>We are here to serve you.</p>
 
-<p>If you will like to work with us, please <%= link_to "Sign up as a contractor", new_contractor_path %></p>
 
 <% if user_signed_in? %>
+
 <h3>Listed below is the list of our current projects in progress:</h3>
+
 
 <% @projects.each do |project| %>
 <li>
 <%= link_to "#{project.title}", project_path(project) %>
 <% end %>
 </li>
+
+<% @contractors.all.each do |contractor| %>
+<% if current_user.email == contractor.email  %>
+<h3>Listed below is the list of your current projects in progress:</h3>
+<% contractor.projects.each do |project| %>
+<%= link_to "#{project.title}", project_path(project) %>
 <% end %>
+<% end %>
+<% end %>
+
+<%= link_to "Create a new project", new_project_path if current_user.admin? %>
+
+<% end %>
+

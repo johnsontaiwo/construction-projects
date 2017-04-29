@@ -1,34 +1,38 @@
 <%= form_for @contractor do |f| %>
  
- <% if @contractor.errors.any? %>
-    <div id="error_explanation">
-       <h2><%= pluralize(@contractor.errors.count, "error") %> prohibited this from being saved:</h2>
-       <ul>
+  <% if @contractor.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@contractor.errors.count, "error") %> prohibited this from being saved:</h2>
+        <ul>
          <% @contractor.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
-       </ul>
-     </div>
-   <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<p>
+  <div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name.downcase %><br />
+  </div>
 
-<%= f.label :name %>
-<%= f.text_field :name %>
-
-</p>
-
-<p>
+  <div class="field">
   <%= f.label :address %>
   <%= f.text_area :address %>
-</p>
+  </div>
 
-<p>
-  <%= f.label :telephone %>
-  <%= f.telephone_field :telephone %>
-</p>
- <%= f.label :category %>
- <%= f.select "category", options_for_select(["Prime", "Sub"]), include_blank: true %></p>
-<%= f.submit 'Sign up' %>
+  <div class="field">
+  <%= f.label :email %>
+  <%= f.text_area :email %>
+  </div>>
+ 
+  <div class="field">
+  <%= f.label :group %>
+  <%= f.select "group", options_for_select(["Prime", "Sub"]), include_blank: true %></p>
+  </div>
+  
+  <div class="actions"> 
+  <%= f.submit %>
+  </div>
 
 <% end %>
