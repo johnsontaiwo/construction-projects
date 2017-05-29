@@ -7,5 +7,7 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :contractors, reject_if: :all_blank
   
-     
+  #def contractors_attributes=(contractors_attributes)
+   #raise contractors_attributes.inspect
+  #end
   end

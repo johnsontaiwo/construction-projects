@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   
   #before_filter: authenticate
-  validates :email, presence: true
-  validates :password, presence: true
+  #validates :email, presence: true
+  #validates :password, presence: true
   
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
