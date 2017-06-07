@@ -8,7 +8,7 @@ class Project < ApplicationRecord
   #accepts_nested_attributes_for :contractors, reject_if: :all_blank
   
   def contractors_attributes=(contractors_attributes)
-    raise contractors_attributes.inspect
+    #raise contractors_attributes.inspect
     contractors_attributes.each do |i, contractor_attributes|
       self.contractors.build(contractor_attributes)
     end
