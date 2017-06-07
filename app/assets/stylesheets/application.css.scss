@@ -10,32 +10,31 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree . 
+ *= require_tree 
  *= require_self
-
-
-
-
-//= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
  */
 
-@import "bootstrap";
+ 
 
-body {
-  padding-top: 70px;
-  padding-bottom: 30px;
-  font-size: small;
-}
+body, body > p, body > li,  body > h5, body > h4, {color: black; 
+                                                   background: pink
+                                                   ;
+                                                 }
+.project-show > h4 {color: blue}  
 
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
-}
+.contractor-info > h3 {color: blue;}  
 
-.theme-showcase > p > .btn {
-  margin: 5px 0;
-}
+.home > a {padding-top: 5px}                                             
+
+nav > ul {color: pink;
+          border: 2px;
+          font-family: sans-serif;
+        }
+
+a:link {color: blue;}
+a:hover {color: red;}
+
+.field {padding-bottom: 20px;
+        padding-top: 10px;
+
+    }

@@ -3,7 +3,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @contractor = @project.contractors.build
   end
 
   def index
@@ -28,8 +27,11 @@ class ProjectsController < ApplicationController
   end
   
   def update
-    @project.update_attributes(project_params)
-    redirect_to @project
+    if @project.update_attributes(project_params)
+    redirect_to @project, notice: "Project updated"
+    else
+    render "edit", notice: "Project can not be updated"
+    end
   end
 
   def destroy
@@ -45,7 +47,7 @@ def set_project
 end
 
 def project_params
-  params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_start_date, :project_end_date, :substantial_completion_date, :project_officer, :category, :contract_amount, :location, :contractor_ids => [], :contractors_attributes => [:name, :address, :telephone, :group])
+  params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_start_date, :project_end_date, :substantial_completion_date, :project_officer, :category, :contract_amount, :location, :contractor_ids => [], :contractors_attributes => [:name, :address, :email, :group])
 end
 
 end

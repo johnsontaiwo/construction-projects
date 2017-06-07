@@ -1,4 +1,4 @@
-<h1>Welcome to Construction Projects</h1>
+<div class="home"><h1>Welcome to Construction Projects</h1>
 
 <p>We are here to serve you.</p>
 
@@ -23,7 +23,8 @@
 <% end %>
 <% end %>
 
-<%= link_to "Create a new project", new_project_path if current_user.admin? %>
+<p><%= link_to "Create a new project", new_project_path if current_user.admin? %></p>
 
 <% end %>
 
+</div>

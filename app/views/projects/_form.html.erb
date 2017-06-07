@@ -7,64 +7,85 @@
 <% end %>
 
 <div class="field">
-<%= f.label :title %>
-<%= f.text_field :title %><br />
+  <%= f.label :title %>
+  <%= f.text_field :title %><br />
 </div>
 
 <div class="field">
-<%= f.label :category %>
-<%= f.text_field :category %><br />
+  <%= f.label :category %>
+  <%= f.text_field :category %><br />
+</div>
+<div class="field">
+  <%= f.label :contract_number %>
+  <%= f.text_field :contract_number %><br />
 </div>
 
 <div class="field">
-<%= f.label :contract_number %>
-<%= f.text_field :contract_number %><br />
+  <%= f.label :solicitation_number %>
+  <%= f.text_field :solicitation_number %><br />
 </div>
 
 <div class="field">
-<%= f.label :solicitation_number %>
-<%= f.text_field :solicitation_number %><br />
+  <%= f.label :project_officer %>
+  <%= f.text_field :project_officer %><br />
 </div>
 
 <div class="field">
-<%= f.label :project_officer %>
-<%= f.text_field :project_officer %><br />
+  <%= f.label :project_start_date %>
+  <%= f.datetime_field :project_start_date %><br />
 </div>
 
 <div class="field">
-<%= f.label :project_start_date %><br />
-<%= f.datetime_field :project_start_date %>
+  <%= f.label :project_end_date %>
+  <%= f.datetime_field :project_end_date %><br />
 </div>
 
 <div class="field">
-<%= f.label :project_end_date %>
-<%= f.datetime_field :project_end_date %><br />
+  <%= f.label :substantial_completion_date %>
+  <%= f.datetime_field :substantial_completion_date %><br />
 </div>
 
 <div class="field">
-<%= f.label :substantial_completion_date %><br />
-<%= f.datetime_field :substantial_completion_date %>
+  <%= f.label :contract_amount %>
+  <%= f.text_field :contract_amount %><br />
 </div>
 
 <div class="field">
-<%= f.label :contract_amount %><br />
-<%= f.text_field :contract_amount %>
+  <%= f.label :location %>
+  <%= f.text_field :location %><br />
 </div>
+
+
+   <div class="contractor-info"><h3>Contractor's information</h3></div>
+<div class="field">
+  <%= f.collection_check_boxes(:contractor_ids, Contractor.all, :id, :name )%>
+</div><br />
+
+<%= f.fields_for :contractors, @project.contractors.build do |contractors_fields| %>
+
+<%= contractors_fields.label :name %>
+<%= contractors_fields.text_field :name %>
+<br />
 
 <div class="field">
-<%= f.label :location %><br />
-<%= f.text_field :location %>
-</div>
+<%= contractors_fields.label :address %>
+<%= contractors_fields.text_field :address %>
+</div><br />
 
 <div class="field">
-    <h3>Choose Contractor</h3>
+<%= contractors_fields.label :email %>
+<%= contractors_fields.text_field :email %>
+</div><br />
 
-<%= f.collection_check_boxes(:contractor_ids, Contractor.all, :id, :name) %><br />
-</div>
+<div class="field">
+<%= contractors_fields.label :group %>
+<%= contractors_fields.select "group", options_for_select(["Prime", "Sub"]), include_blank: true %></div>
+ <%end%><br />
 
 <div class="actions">
-<%= f.submit %><br />
+  <%= f.submit %><br />
 </div>
+
 <% end %>
 
 

@@ -9,8 +9,6 @@
     end
   end
 
-
-
   def new
     @comment = Comment.new
     if params[:project_id]
@@ -64,7 +62,7 @@
   end
   
   def comment_params
-    params.require(:comment).permit(:content, :project_id)
+    params.require(:comment).permit(:content)
   end
 
 end

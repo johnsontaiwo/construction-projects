@@ -1,33 +1,33 @@
 <div class=project-show>
 
-<h3>Title: <%= @project.title %></h3>
+<h5>Title: <%= @project.title %></h5>
 
-<h3>Location: <%= @project.location %></h3>
+<h5>Location: <%= @project.location %></h5>
 
-<h3>Contract Number: <%= @project.contract_number %></h3>
+<h5>Contract Number: <%= @project.contract_number %></h5>
 
-<h3>Category: <%= @project.category %></h3>
+<h5>Category: <%= @project.category %></h5>
 
-<h3>Start date: <%= @project.project_start_date %></h3>
+<h5>Start date: <%= @project.project_start_date %></h5>
 
-<h3>End date: <%= @project.project_end_date %></h3>
+<h5>End date: <%= @project.project_end_date %></h5>
 
-<h3>Substantial completion date: <%= @project.substantial_completion_date%></h3>
+<h5>Substantial completion date: <%= @project.substantial_completion_date%></h5>
 
-<h3>Contract Amount: <%= @project.contract_amount %></h3>
+<h5>Contract Amount: <%= @project.contract_amount %></h5>
          
-         <h2>Contractors' Information</h2>
- <% @project.contractors.each do |contractor| %>
- <ol>
-  <h3>Contractor Name: <%= "#{contractor.name}"%></h3>
-  <h3>Category: <%="#{contractor.group}"%></h3>
-  </ol>
+         <h4>Contractors' Information</h4>
+ <% @project.contractors.each_with_index do |contractor| %>
+ <li>
+  <h5>Contractor Name: <%= "#{contractor.name}" %></h5>
+  <h5>Category: <%="#{contractor.group}"%></h5>
+  </li>
   <% end %>
 
 
 
 <% if current_user.admin?%>
- <h3>Project's Comments:</h3>
+ <h4>Project's Comments:</h4>
 <% @project.comments.each do |comment| %>
   <li>
   <%= comment.content %>  <h5><%= link_to "Edit comment", edit_project_comment_path(@project, comment) %> | <%= link_to "Delete comment", project_comment_path(@project, comment), :data => {:confirm => "Are You sure?", :method => "delete"}%></h5>
@@ -35,13 +35,13 @@
  <% end %>
  
  
-<h3><%= link_to "New comment", new_project_comment_path(@project) %></h3>
+<h4><%= link_to "New comment", new_project_comment_path(@project) %></h4>
 
 <%= link_to "Edit Project", edit_project_path(@project)%> |
 
 <%= link_to "Delete project", project_path(@project),  :data => {:confirm => "Are You sure?", :method => "delete"}%> |
 
-<%= link_to "Back to projects", projects_path%> |
+<%= link_to "Back to projects", projects_path%> | <%= link_to "Create a new project", new_project_path %> |
 
 <%= link_to "Home", root_path %>
 
