@@ -38,7 +38,7 @@ class ContractorsController < ApplicationController
 
   def destroy
     @contractor.destroy
-    redirect_to '/'
+    redirect_to contractors_path
   end
 
  private

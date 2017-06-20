@@ -16,18 +16,23 @@
 
 <h5>Contract Amount: <%= @project.contract_amount %></h5>
          
-         <h4>Contractors' Information</h4>
+        <div class="info"><h4>Contractors' Information</h4></div>
  <% @project.contractors.each_with_index do |contractor| %>
+ <div class="contractor-info">
  <li>
+  <fieldset>
   <h5>Contractor Name: <%= "#{contractor.name}" %></h5>
   <h5>Category: <%="#{contractor.group}"%></h5>
+  </fieldset>
   </li>
+ </div>
   <% end %>
 
 
 
 <% if current_user.admin?%>
- <h4>Project's Comments:</h4>
+ 
+ <div class="info"><h4>Project's Comments:</h4></div>
 <% @project.comments.each do |comment| %>
   <li>
   <%= comment.content %>  <h5><%= link_to "Edit comment", edit_project_comment_path(@project, comment) %> | <%= link_to "Delete comment", project_comment_path(@project, comment), :data => {:confirm => "Are You sure?", :method => "delete"}%></h5>
@@ -43,8 +48,6 @@
 
 <%= link_to "Back to projects", projects_path%> | <%= link_to "Create a new project", new_project_path %> |
 
-<%= link_to "Home", root_path %>
-
 <% end %>
-
+<%= link_to "Return", root_path %>
  </div>

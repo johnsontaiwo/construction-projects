@@ -56,15 +56,18 @@
 </div>
 
 
-   <div class="contractor-info"><h3>Contractor's information</h3></div>
+   <div class="contractor-info"><h3>Select a Contractor</h3></div>
 <div class="field">
   <%= f.collection_check_boxes(:contractor_ids, Contractor.all, :id, :name )%>
+  
 </div><br />
+ 
+ <div class="contractor-info"><h3>Create a new Contractor</h3></div>
 
 <%= f.fields_for :contractors, @project.contractors.build do |contractors_fields| %>
 
 <%= contractors_fields.label :name %>
-<%= contractors_fields.text_field :name %>
+<%= contractors_fields.text_field :name.downcase %>
 <br />
 
 <div class="field">
