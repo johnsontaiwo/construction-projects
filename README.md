@@ -1,27 +1,19 @@
 <<<<<<< HEAD
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This web application is made after the model of a construction industry agency that uses technology to track their projects and contractors.
 
-Things you may want to cover:
+To use this app, you must clone it into your local system and start rails server. 
 
-* Ruby version
+For a starter, a user must first sign up as an ordinary user before they can be signed up as a contractor by the Administrator.
 
-* System dependencies
+A signed-in user can see the list of all the agency's ongoin projects but they can't perform any action on them.
 
-* Configuration
+A signed-in user, who has been signed-up as a contractor by the Administrator and is working on a list of projects will see the list of all his projects when he logs in but can't perform any action on those projects.
 
-* Database creation
+An administrator can perform any action on all the projects and contracctors and users.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
+As you will see, this app is still in development mode and have a lot of work to be done on it.
 * ...
 =======
 # construction-projects
