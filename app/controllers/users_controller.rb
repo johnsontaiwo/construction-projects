@@ -7,6 +7,7 @@
   end
 
   def index 
+    @contractor = Contractor.find_by(params[:contractor_id])
     @users = User.all
     authorize User
   end
