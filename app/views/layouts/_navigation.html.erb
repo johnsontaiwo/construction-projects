@@ -7,8 +7,8 @@
         <%= link_to "Signed in as #{current_user.email}", user_session_path %> | 
         <%= link_to 'Edit your profile', edit_user_registration_path %> |
         
-        <%= link_to "Sign up as contractor", new_contractor_path if @contractor.email != current_user.email %>
         
+              
         <% if current_user.admin?%>
         <%= link_to "Create a new contractor", new_contractor_path %> | <%= link_to " Contractors", contractors_path%> | <%= link_to "Users", users_path %>
         <%end%></br><br>

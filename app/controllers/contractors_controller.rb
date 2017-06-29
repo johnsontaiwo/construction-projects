@@ -13,7 +13,6 @@ class ContractorsController < ApplicationController
     @projects = Project.all
     if current_user
       @contractor = Contractor.create(contractor_params)
-      current_user = @contractor
       if  @contractor.save
           redirect_to  @contractor, notice: "You have successfully signed up as contractor with us"
       else

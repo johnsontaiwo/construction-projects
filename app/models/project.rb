@@ -9,6 +9,7 @@ class Project < ApplicationRecord
   
   def contractors_attributes=(contractors_attributes)
     contractors_attributes.each do |i, contractor_attribute|
+      #raise contractor_attribute.inspect
       contractor = Contractor.find_or_create_by(contractor_attribute)
       self.contractor_projects.build(:contractor => contractor)
     end

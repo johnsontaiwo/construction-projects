@@ -3,6 +3,7 @@ class Contractor < ApplicationRecord
   has_many :projects, through: :contractor_projects
 
   validates :name, presence: true
+  
   validates :email, presence: true, uniqueness: true
    
 

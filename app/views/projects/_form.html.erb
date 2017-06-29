@@ -58,7 +58,11 @@
 
    <div class="contractor-info"><h3>Select a Contractor</h3></div>
 <div class="field">
-  <%= f.collection_check_boxes(:contractor_ids, Contractor.all, :id, :name )%>
+  <%= f.collection_check_boxes(:contractor_ids, Contractor.all, :id, :name ) do |c| %>
+  <p>
+    <%= c.label %>
+    <%= c.check_box :class => "check_box" %>
+  <% end %>
   
 </div><br />
  
