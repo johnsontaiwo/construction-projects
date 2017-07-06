@@ -23,12 +23,11 @@
   <fieldset>
   <h5>Contractor Name: <%= "#{contractor.name}" %></h5>
   <h5>Category: <%="#{contractor.group}"%></h5>
+  <h5>Bid Status: <%=@project.approved?%></h5>
   </fieldset>
   </li>
  </div>
   <% end %>
-
-
 
 <% if current_user.admin?%>
  

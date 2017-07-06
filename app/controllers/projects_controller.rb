@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
+    #raise project_params.inspect
       if @project.save
         redirect_to @project
       else
@@ -28,6 +29,7 @@ class ProjectsController < ApplicationController
   
   def update
     if @project.update_attributes(project_params)
+      #raise project_params.inspect
     redirect_to @project, notice: "Project updated"
     else
     render "edit", notice: "Project can not be updated"
@@ -42,12 +44,11 @@ class ProjectsController < ApplicationController
   private
 
 
-def set_project
-  @project = Project.find_by(:id => params[:id])
-end
+  def set_project
+    @project = Project.find_by(:id => params[:id])
+  end
 
-def project_params
-  params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_start_date, :project_end_date, :substantial_completion_date, :project_officer, :category, :contract_amount, :location, :contractor_ids => [], :contractors_attributes => [:name, :address, :email, :group])
-end
-
+  def project_params
+    params.require(:project).permit(:title, :contract_number, :solicitation_number, :project_start_date, :project_end_date, :substantial_completion_date, :project_officer, :category, :contract_amount, :location, :contractor_ids => [], :contractors_attributes => [:name, :address, :email, :group]) 
+  end
 end

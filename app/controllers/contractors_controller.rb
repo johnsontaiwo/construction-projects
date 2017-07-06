@@ -47,6 +47,6 @@ class ContractorsController < ApplicationController
   end
 
   def contractor_params
-    params.require(:contractor).permit(:name, :address, :email, :group,)
+    params.require(:contractor).permit(:name, :address, :email, :group)
   end
 end
