@@ -7,7 +7,7 @@ To use this app, you must clone it into your local system and start rails server
 
 For a starter, a user must first sign up as an ordinary user before they can be signed up as a contractor by the Administrator.
 
-A signed-in user can see the list of all the agency's ongoin projects but they can't perform any action on them.
+A signed-in user can see the list of all the agency's on-going projects but they can't perform any action on them.
 
 A signed-in user, who has been signed-up as a contractor by the Administrator and is working on a list of projects will see the list of all his projects when he logs in but can't perform any action on those projects.
 

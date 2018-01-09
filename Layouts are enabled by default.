@@ -1,0 +1,31 @@
+Layouts are enabled by default. 
+They are generated with new Rails app.
+The "yield" statement in Layouts is what Rails uses to display content of actions in the browser. If the "yield" statement is taken out action view contents won't be displayed. The position of the yield statement determines where the content of the action will be rendered.
+
+
+
+
+<% if @project.contractor_projects.present? %>
+
+<%= f.fields_for :contractor_projects, @project.contractor_projects.build do |contractor_project_fields| %>
+
+<%= contractor_project_fields.label :bid_status %>
+<%= contractor_project_fields.select "bid_status", options_for_select([@project.approved?]), include_blank: true %></div>
+<%end%>
+<% end %>
+
+
+
+#:contractor_projects => [], #:contractor_projects_attributes => [:bid_status])
+end
+
+
+self.contractor_projects.first.bid_status =
+
+
+function forLoop(array) {
+  for (var = i, i < 26, i++)
+    if (i === 1) {
+      return array.push("I am 1 strange loop.")
+    } else {return array.push("I am " + `${i}`, + "loops.")}
+}

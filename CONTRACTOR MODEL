@@ -1,0 +1,61 @@
+CONTRACTOR MODEL
+Attributes of a contractor:
+1. He has a name
+2. He has a Tax Id.
+3. He has a Telephone number.
+4. He has an office address.
+5. He has a qualification status.
+6. He can either be a prime or sub-contractor.
+7. He has many projects through contractors_projects.
+
+
+PROJECT MODEL
+Attributes of a Project
+1. It has a name.
+2. It has a contract number.
+3. It has a solicitation number.
+4. It has a Project Officer.
+5. It has a start date
+6. It has a finish date.
+7. It has an Amount.
+8. It has a location.
+9. It has many contractors through contractors_projects.
+
+
+
+CONTRACTORS_PROJECTS MODEL
+Attributes of contractors_projects.
+1. It belongs to a contractor.
+2. It belongs to a project.
+
+
+ USER MODEL
+ Attributes of a User.
+ 1. He has a name.
+ 2. He has an email address.
+ 3. He has an address.
+ 4. He can either be admin or an ordinary user.
+
+
+ BIDS MODEL
+ Attributes of a bid.
+ 1. It has a title.
+ 2. It has a contract number.
+ 3. It has a solicitation number.
+ 4. Bid opening date.
+ 5. Bid closing date.
+
+
+
+ DESIGN
+ 1. Contractor should be able to sign up
+ 2. Contractor should be able to log in after signing up.
+ 3. Logged in contractor should be able to see all advertised bids.
+ 4. Contractor should be able to see his/her profile.
+ 5. Contractor should not be able to see other contractor's profile.
+ 6. Contractor should not be able to delete or update their profile unless if they are ADMIN.
+ 7. After logged in, a contractor should be able to see the list of all his projects/contracts with the agency, both past and current.
+
+
+
+I want a contractor to be able to go to my site and sign up.
