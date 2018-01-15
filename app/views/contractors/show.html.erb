@@ -21,7 +21,12 @@
 <% if current_user.admin?%>
 
   <%= link_to "Edit contractor", edit_contractor_path(@contractor)  %><br></br>
-  <%= link_to "Delete contractor", contractor_path(@contractor), :data => {:confirm => "Are You sure?", :method => "delete"}%>
-
+  <%= link_to "Delete contractor", contractor_path(@contractor), :data => {:confirm => "Are You sure?", :method => "delete"}%> <br></br>
+          <h3 class="contractor_projects">Projects</h3>
+  <% @contractor.projects.each do |project| %>
+  <li>
+  <%= link_to "#{project.title}", project_path(project) %>
+</li>
+<% end %>
 
 <%end%>
