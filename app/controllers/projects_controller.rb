@@ -7,6 +7,10 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    respond_to do |f|
+    f.html {render 'projects/index', :layout => false}
+    f.json {render json: @projects}
+    end
   end
 
   def create

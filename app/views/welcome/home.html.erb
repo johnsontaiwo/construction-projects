@@ -5,14 +5,16 @@
 
 <% if user_signed_in? %>
 
-<h3>Listed below is the list of our current projects in progress:</h3>
+<h3>Click <%= link_to "here", projects_path, :class => "project_list"%>
+for the list of our current projects in progress:</h3>
+ 
+ <%#= link_to "Projects", projects_path, :class => "project_list"%>
 
-
-<% @projects.each do |project| %>
-<li>
-<%= link_to "#{project.title}", project_path(project) %>
-<% end %>
-</li>
+<%# @projects.each do |project| %>
+<!-- <li>
+<%#= link_to "#{project.title}", project_path(project) %>
+<%# end %>
+</li> -->
 
 <% @contractors.all.each do |contractor| %>
 <% if current_user.email == contractor.email  %>

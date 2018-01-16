@@ -12,7 +12,7 @@
         <%#end%>
               
         <% if current_user.admin?%>
-        <%= link_to "Create a new contractor", new_contractor_path %> | <%= link_to " Contractors", contractors_path%> | <%= link_to "Users", users_path %> 
+        <%= link_to "Create a new contractor", new_contractor_path %> | <div class="contractor-list"><%= link_to " Contractors", contractors_path%></div> | <%= link_to "Users", users_path %> 
         <%end%></br><br>
 
         
