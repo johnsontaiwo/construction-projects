@@ -3,6 +3,10 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    respond_to do |f|
+    f.html {render 'projects/new', :layout => false}
+    f.json {render json: @project}
+    end
   end
 
   def index
@@ -11,6 +15,7 @@ class ProjectsController < ApplicationController
     f.html {render 'projects/index', :layout => false}
     f.json {render json: @projects}
     end
+    
   end
 
   def create
@@ -25,6 +30,11 @@ class ProjectsController < ApplicationController
 
   def show
     @comment = @project.comments
+    respond_to do |f|
+    f.html {render 'projects/show'}
+    f.json {render json: @project}
+    end
+    # render json: @project
   end
 
   def edit

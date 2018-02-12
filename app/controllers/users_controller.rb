@@ -4,6 +4,10 @@
    
    def new
     @user = User.new
+    respond_to do |f|
+    f.html {render 'users/new', :layout => false}
+    f.json {render json: @user}
+    end
   end
 
   def index 

@@ -13,6 +13,11 @@
     @comment = Comment.new
     if params[:project_id]
     @comment = @project.comments.build
+    respond_to do |f|
+      f.html {render 'comments/new', :layout => false}
+      f.json {render json: @comment}
+      end
+      #render json: @comment
     end
   end
 
@@ -20,7 +25,12 @@
     if params[:project_id]
       @comment = @project.comments.create(comment_params)
       if @comment.save
-      redirect_to @project
+        #render 'comments/show'
+      #redirect_to @project
+      respond_to do |f|
+      f.html {render 'projects/show'}
+      f.json {render json: @comment}
+      end
       else
       render "new"
       end

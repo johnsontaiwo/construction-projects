@@ -1,4 +1,4 @@
-<div class=project-show>
+
 
 <h5>Title: <%= @project.title %></h5>
 
@@ -33,13 +33,28 @@
  
  <div class="info"><h4>Project's Comments:</h4></div>
 <% @project.comments.each do |comment| %>
-  <li>
-  <%= comment.content %> <h6><%= comment.created_at.strftime("Printed on %m/%d/%Y") %></h6>  <h5><%= link_to "Edit comment", edit_project_comment_path(@project, comment) %> | <%= link_to "Delete comment", project_comment_path(@project, comment), :data => {:confirm => "Are You sure?", :method => "delete"}%></h5>
-  </li>
+  
+    <li>
+      <%= comment.content %> <h6><%= comment.created_at.strftime("Printed on %m/%d/%Y") %></h6>  <h5><%= link_to "Edit comment", edit_project_comment_path(@project, comment) %> | <%= link_to "Delete comment", project_comment_path(@project, comment), :data => {:confirm => "Are You sure?", :method => "delete"}%></h5>
+    </li>
+    <div class="comments">
+      <li>
+      </li>
+    </div>
  <% end %>
  
+
+ <div class="comment_form">
+
+ </div>
  
-<h4><%= link_to "New comment", new_project_comment_path(@project) %></h4>
+ <div class="projects_comments">
+  <ol>
+  </ol>
+</div>
+
+ 
+<h4><%= link_to "New comment", new_project_comment_path(@project), :class => "new_ajax_comment" %></h4>
 
 <%= link_to "Edit Project", edit_project_path(@project)%> |
 
@@ -49,4 +64,4 @@
 
 <% end %>
 <%= link_to "Return", root_path %>
- </div>
+

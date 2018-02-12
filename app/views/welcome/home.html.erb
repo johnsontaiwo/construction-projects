@@ -10,11 +10,28 @@ for the list of our current projects in progress:</h3>
  
  <%#= link_to "Projects", projects_path, :class => "project_list"%>
 
-<%# @projects.each do |project| %>
-<!-- <li>
-<%#= link_to "#{project.title}", project_path(project) %>
-<%# end %>
-</li> -->
+<div class="projects_contractors">
+   <ol>
+  </ol>
+</div>
+
+<div class="project_details">
+   <ol>
+  </ol>
+</div>
+
+<div class="new-ajax-contractor">
+
+</div><br></br>
+
+<div class="new-ajax-project">
+
+</div><br></br>
+
+ <% @projects.each do |project| %>
+ <li>
+<%= link_to "#{project.title}", project_path(project), :class => "project_show" %>
+<% end %>
 
 <% @contractors.all.each do |contractor| %>
 <% if current_user.email == contractor.email  %>
@@ -25,7 +42,7 @@ for the list of our current projects in progress:</h3>
 <% end %>
 <% end %>
 
-<p><%= link_to "Create a new project", new_project_path if current_user.admin? %></p>
+<p><%= link_to "Create a new project", new_project_path, :class => "ajax_new_project" if current_user.admin? %></p>
 
 <% end %>
 
