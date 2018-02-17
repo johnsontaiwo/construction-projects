@@ -26,11 +26,12 @@
       @comment = @project.comments.create(comment_params)
       if @comment.save
         #render 'comments/show'
-      #redirect_to @project
-      respond_to do |f|
-      f.html {render 'projects/show'}
-      f.json {render json: @comment}
-      end
+      redirect_to @project
+      # respond_to do |f|
+      # f.html {render @project}
+      # f.js {render 'projects/show.js.erb', :layout => false}
+      # f.json {render json: @comment}
+      # end
       else
       render "new"
       end

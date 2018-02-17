@@ -21,8 +21,13 @@ class ContractorsController < ApplicationController
     @projects = Project.all
     if current_user
       @contractor = Contractor.create(contractor_params)
-      if  @contractor.save
-          redirect_to  @contractor, notice: "You have successfully signed up as contractor with us"
+      if @contractor.save
+          #redirect_to  @contractor, notice: "You have successfully signed up as contractor with us"
+        respond_to do |f|
+          f.html {render 'contractors/new', :layout => false}
+          f.js {render 'contractors/create.js.erb', :layout => false}
+          f.json {render json: @contractor}
+      end
       else
         render 'new', alert: "Your email does not match "
      end

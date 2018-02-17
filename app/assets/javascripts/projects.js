@@ -35,8 +35,9 @@ function newProject(){
 
 $ (function() {
   $(document).on("submit", "#new_project", function(e){
-    alert("Hey")
-    //e.preventDefault()
+    //alert("Hey")
+    
+    e.preventDefault()
   })
 })
 

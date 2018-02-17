@@ -1,7 +1,1 @@
-<h1><% @contractors.all.each do |contractor| %></h1>
-  
-      <li>
-      <%= link_to " #{contractor.name}", contractor_path(contractor), :class => "contractor_show_list"%>
-      </li>
- 
-      <% end %>
+<%= render 'contractors' %>

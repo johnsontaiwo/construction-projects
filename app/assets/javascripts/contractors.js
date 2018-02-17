@@ -5,7 +5,20 @@
 $(function() {
   
  $(document).on("submit", "#new_contractor", function(e) {
-   console.log(e)
+   //alert("Hey")
+    $.ajax({
+      type: 'POST',
+      url: this.action,
+      data: $(this).serialize(),
+      success: function(response) {
+        //$("div.projects_comments ol").empty()
+        //debugger
+        //$("div.comments li").append(response)
+         
+        $("header").empty()
+      }
+    })
+
     e.preventDefault()
   })
 

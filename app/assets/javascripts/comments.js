@@ -8,21 +8,24 @@
 
 $(function() {
   $(document).on("submit", "#new_comment", function (e) {
-    alert("e")
-    // $.ajax({
-    //   type: 'POST',
-    //   url: this.action,
-    //   data: $(this).serialize(),
-    //   success: function(response) {
-    //     //$("div.projects_comments ol").empty()
-    //     //debugger
-    //     $("div.comments li").append(response)
-    //   }
-    // })
-    e.preventDefault()
+    // alert("e")
+
+    $.ajax({
+      type: 'POST',
+      url: this.action,
+      data: $(this).serialize(),
+      success: function(response) {
+        //$("div.projects_comments ol").empty()
+        //debugger
+        //$("div.comments li").append(response)
+         
+        $("header").empty()
+      }
+    })
+    
+       e.preventDefault()
     })
 
-    
     $("a.new_ajax_comment").on("click", function(e) {
     //$("div.comment_form").empty()
     //$("a.contractor_list").empty()
