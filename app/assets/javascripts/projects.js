@@ -10,9 +10,9 @@ $ (function () {
 function projectList() {
   $("a.project_list").on("click", function(e) {
   
-     $("div.projects_contractors ol").empty()
+     $("div.projects ol").empty()
      $.get("/projects", function(resp) {
-          $("div.projects_contractors ol").append(resp).val()
+          $("div.projects ol").append(resp).val()
       
        })
      
@@ -22,10 +22,10 @@ function projectList() {
 
 function newProject(){
   $("a.ajax_new_project").on("click", function(e){
-    $("body").empty()
+    $("div.new-ajax-project").empty()
     $.get("/projects/new", function(resp){
-      $("body").append(resp).val()
-     
+      $("div.new-ajax-project").append(resp).val()
+      
     })
     
     e.preventDefault()
@@ -36,7 +36,17 @@ function newProject(){
 $ (function() {
   $(document).on("submit", "#new_project", function(e){
     //alert("Hey")
-    
+    $.ajax({
+      type: 'POST',
+      url: this.action,
+      data: $(this).serialize(),
+      success: function(response) {
+        //debugger
+        $("div.projects ol").append(response).val()
+        $("div.new-ajax-project").empty()
+        $("header").empty()
+      }
+    })
     e.preventDefault()
   })
 })

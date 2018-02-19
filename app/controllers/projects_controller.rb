@@ -22,7 +22,11 @@ class ProjectsController < ApplicationController
     @project = Project.create(project_params)
     #raise project_params.inspect
       if @project.save
-        redirect_to @project
+        #redirect_to @project
+        respond_to do |f|
+          f.html {redirect_to @project, :layout => false}
+          f.json {render json: @projects}
+    end
       else
         render "new"
       end
