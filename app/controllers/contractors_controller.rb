@@ -1,5 +1,5 @@
 class ContractorsController < ApplicationController
- #before_action :find_contractor, only: [:show, :edit, :update, :destroy]
+ before_action :find_contractor, only: [:show, :edit, :update, :destroy]
  #skip_before_filter :verify_authenticity_token, :only => :create
   def index
     @contractors = Contractor.all
@@ -24,8 +24,7 @@ class ContractorsController < ApplicationController
       if @contractor.save
           #redirect_to  @contractor, notice: "You have successfully signed up as contractor with us"
         respond_to do |f|
-          f.html {render 'contractors/new', :layout => false}
-          f.js {render 'contractors/create.js.erb', :layout => false}
+          f.html {redirect_to  @contractor, notice: "You have successfully signed up as contractor with us", :layout => false}
           f.json {render json: @contractor}
       end
       else

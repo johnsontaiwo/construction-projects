@@ -11,10 +11,9 @@ $(function() {
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
-        //$("div.projects_comments ol").empty()
         //debugger
-        //$("div.comments li").append(response)
-         
+        $("div.projects_contractors").append(response).val()
+        $("div.new-ajax-contractor").empty()
         $("header").empty()
       }
     })
@@ -36,14 +35,14 @@ $(function() {
  
   $(document).on("click", "a.contractor_show_list", function(e) {
     console.log(e)
-    e.preventDefault();
+    //e.preventDefault();
   })
 
   
   $("a.ajax_new_contractor").on("click", function(e) {
-    $("body").empty()
+    $("div.new-ajax-contractor").empty()
     $.get('/contractors/new', function(resp) {
-      $("body").append(resp).val()
+      $("div.new-ajax-contractor").append(resp).val()
     })
     e.preventDefault()
   })
