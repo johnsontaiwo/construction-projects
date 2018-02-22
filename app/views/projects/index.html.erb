@@ -1,7 +1,9 @@
  <% @projects.each do |p| %>
 
  <li>
- <%= link_to "#{p.title}", project_path(p), :class => "project" %>
+ <%= link_to "#{p.title}", project_path(p), :class => "project_show_list" %>
  </li>
 
- <%end%>
+ <%end%> <br></br>
+
+<%= link_to "Return", root_path %>

@@ -1,5 +1,5 @@
 
-
+//var contractorid = 0
 
 
 $(function() {
@@ -12,7 +12,7 @@ $(function() {
       data: $(this).serialize(),
       success: function(response) {
         //debugger
-        $("div.projects_contractors").append(response).val()
+        $("div.contractors").append(response).val()
         $("div.new-ajax-contractor").empty()
         $("header").empty()
       }
@@ -23,30 +23,50 @@ $(function() {
 
 
   $("a.contractor_list").on("click", function(e) {
-    $("div.projects_contractors ol").empty()
+    $("div.contractors ol").empty()
     $.get("/contractors", function(resp) {
-      $("div.projects_contractors ol").append(resp).val()
+      $("div.contractors ol").append(resp).val()
         //resp.data.forEach(function(data))
       })
     e.preventDefault();
   })
 
 
- 
+ function Contractor(id, name, email, address){
+  this.id = id
+  this.name = name
+  this.email = email
+  this.address = address}
+  
+  
   $(document).on("click", "a.contractor_show_list", function(e) {
-    console.log(e)
-    //e.preventDefault();
+    
+    //let contractor = new Contractor('id', 'name', 'email', 'address')
+  $.get( $(e.target).attr('href'), function(resp) {
+   $("div.contractor").append(resp).val()
+   $("div.contractors ol").empty()
+   $("header").empty()
+    //debugger
+  })
+    e.preventDefault();
   })
 
   
   $("a.ajax_new_contractor").on("click", function(e) {
     $("div.new-ajax-contractor").empty()
+   $("div.contractors ol").empty()
     $.get('/contractors/new', function(resp) {
       $("div.new-ajax-contractor").append(resp).val()
     })
+   
     e.preventDefault()
   })
   
+
+  $(document).on("click", "a.edit_contractor", function(e) {
+    alert("Edit")
+    e.preventDefault()
+  })
 })
   
   

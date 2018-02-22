@@ -1,26 +1,27 @@
 
-$ (function () {
- projectList()
- newProject()
- //createProject()
-})
+// $ (function () {
+//  projectList()
+//  newProject()
+//  //createProject()
+// })
 
 
 
-function projectList() {
+// function projectList() {
+  $ (function() {
   $("a.project_list").on("click", function(e) {
   
      $("div.projects ol").empty()
      $.get("/projects", function(resp) {
           $("div.projects ol").append(resp).val()
-      
+          $("div.project").empty()
        })
      
         e.preventDefault()
       })
-  }  
+    
 
-function newProject(){
+// function newProject(){
   $("a.ajax_new_project").on("click", function(e){
     $("div.new-ajax-project").empty()
     $.get("/projects/new", function(resp){
@@ -30,10 +31,10 @@ function newProject(){
     
     e.preventDefault()
   })
-}
 
 
-$ (function() {
+
+// $ (function() {
   $(document).on("submit", "#new_project", function(e){
     //alert("Hey")
     $.ajax({
@@ -48,6 +49,18 @@ $ (function() {
       }
     })
     e.preventDefault()
+  })
+   
+   
+  $(document).on("click", "a.project_show_list", function(e){
+   $.get( $(e.target).attr('href'), function(resp) {
+    console.log(resp)
+   $("div.project").append(resp).val()
+   $("div.projects ol").empty()
+   $("header").empty()
+   $("a.ajax_new_project").hide()
+  })
+    e.preventDefault();
   })
 })
 
