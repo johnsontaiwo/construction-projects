@@ -11,27 +11,25 @@
 
   def new
     @comment = Comment.new
-    if params[:project_id]
-    @comment = @project.comments.build
+    #if params[:project_id]
+    #@comment = @project.comments.build
     respond_to do |f|
       f.html {render 'comments/new', :layout => false}
       f.json {render json: @comment}
       end
       #render json: @comment
-    end
+    #end
   end
 
   def create
     if params[:project_id]
       @comment = @project.comments.create(comment_params)
       if @comment.save
-        #render 'comments/show'
-      redirect_to @project
-      # respond_to do |f|
-      # f.html {render @project}
-      # f.js {render 'projects/show.js.erb', :layout => false}
-      # f.json {render json: @comment}
-      # end
+      #redirect_to @project
+      respond_to do |f|
+      f.html {redirect_to @project, :layout => false}
+      f.json {render json: @comment}
+      end
       else
       render "new"
       end

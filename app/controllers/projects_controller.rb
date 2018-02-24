@@ -42,13 +42,20 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-  
+  respond_to do |f|
+    f.html {render 'projects/edit', :layout => false}
+    f.json {render json: @project}
+    end
   end
   
   def update
     if @project.update_attributes(project_params)
       #raise project_params.inspect
-    redirect_to @project, notice: "Project updated"
+    #redirect_to @project, notice: "Project updated"
+    respond_to do |f|
+          f.html {redirect_to @project, notice: "Project updated"}
+          f.json {render json: @project}
+      end
     else
     render "edit", notice: "Project can not be updated"
     end

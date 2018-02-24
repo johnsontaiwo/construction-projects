@@ -33,35 +33,30 @@
  
  <div class="info"><h4>Project's Comments:</h4></div>
 
-<% @project.comments.each do |comment| %>
-  
-    <li id="comments">
+
+<div class="comments"> 
+  <% @project.comments.each do |comment| %>
+    <li>
       <%= comment.content %> <h6><%= comment.created_at.strftime("Printed on %m/%d/%Y") %></h6>  <h5><%= link_to "Edit comment", edit_project_comment_path(@project, comment) %> | <%= link_to "Delete comment", project_comment_path(@project, comment), :data => {:confirm => "Are You sure?", :method => "delete"}%></h5>
     </li>
-    
-    <div class="comments">
-      <li>
-      </li>
-    </div>
-
- <% end %>
- 
+  <% end %>
+ </div>
 
  <div class="comment_form">
 
  </div>
  
- <div class="projects_comments">
+ <!-- <div class="projects_comments">
   <ol>
   </ol>
-</div>
+</div> -->
 
 
-<h4><%= link_to "New comment", new_project_comment_path(@project), :class => "new_ajax_comment" %></h4>
+<h4><%= link_to "New comment", new_project_comment_path(@project), :class => "new_ajax_comment", data: {id: @project.id}%> </h4>
 
-<%= link_to "Edit Project", edit_project_path(@project)%> |
+<%= link_to "Edit Project", edit_project_path(@project), :class => "project_edit"%> |
 
-<%= link_to "Delete project", project_path(@project),  :data => {:confirm => "Are You sure?", :method => "delete"}%> |
+<%= link_to "Delete project", project_path(@project),  :data => {:confirm => "Are You sure?", :method => "delete"}, :class => "delete_project"%> |
 
 <%= link_to "Back to projects", projects_path, :class => "project_list"%> | <%= link_to "Create a new project", new_project_path, :class => "ajax_new_project" %> |
 

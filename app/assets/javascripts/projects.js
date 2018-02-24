@@ -1,14 +1,5 @@
-
-// $ (function () {
-//  projectList()
-//  newProject()
-//  //createProject()
-// })
-
-
-
-// function projectList() {
-  $ (function() {
+$ (function() {
+  
   $("a.project_list").on("click", function(e) {
   
      $("div.projects ol").empty()
@@ -21,7 +12,7 @@
       })
     
 
-// function newProject(){
+
   $("a.ajax_new_project").on("click", function(e){
     $("div.new-ajax-project").empty()
     $.get("/projects/new", function(resp){
@@ -34,7 +25,7 @@
 
 
 
-// $ (function() {
+
   $(document).on("submit", "#new_project", function(e){
     //alert("Hey")
     $.ajax({
@@ -54,7 +45,7 @@
    
   $(document).on("click", "a.project_show_list", function(e){
    $.get( $(e.target).attr('href'), function(resp) {
-    console.log(resp)
+    //console.log(resp)
    $("div.project").append(resp).val()
    $("div.projects ol").empty()
    $("header").empty()
@@ -62,6 +53,39 @@
   })
     e.preventDefault();
   })
+
+  // $(document).on("click", "a.project_edit", function(e) {
+   
+  //  $.get( $(e.target).attr('href'), function(resp) {
+  
+      
+  //    $("body").append(resp).val()
+      
+  // //  $("header").empty()
+  // //  $("a.ajax_new_project").hide()
+  //   })
+  //   e.preventDefault();
+  //  })
+
+
+
+  $(document).on("submit", ".edit_project", function(e){
+    //alert("Hey")
+    $.ajax({
+      type: 'PATCH',
+      url: this.action,
+      data: $(this).serialize(),
+      success: function(response) {
+        
+        $("div.projects ol").append(response).val()
+        $("div.new-ajax-project").empty()
+        $("header").empty()
+      }
+    })
+    e.preventDefault()
+  })
+
+
 })
 
 
