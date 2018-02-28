@@ -24,6 +24,7 @@
   def create
     if params[:project_id]
       @comment = @project.comments.create(comment_params)
+      #binding.pry
       if @comment.save
       #redirect_to @project
       respond_to do |f|

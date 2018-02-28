@@ -37,6 +37,7 @@ $ (function() {
         $("div.projects ol").append(response).val()
         $("div.new-ajax-project").empty()
         $("header").empty()
+        $("a.new_ajax_comment").hide()
       }
     })
     e.preventDefault()
@@ -69,21 +70,21 @@ $ (function() {
 
 
 
-  $(document).on("submit", ".edit_project", function(e){
-    //alert("Hey")
-    $.ajax({
-      type: 'PATCH',
-      url: this.action,
-      data: $(this).serialize(),
-      success: function(response) {
+  // $(document).on("submit", ".edit_project", function(e){
+  //   //alert("Hey")
+  //   $.ajax({
+  //     type: 'PATCH',
+  //     url: this.action,
+  //     data: $(this).serialize(),
+  //     success: function(response) {
         
-        $("div.projects ol").append(response).val()
-        $("div.new-ajax-project").empty()
-        $("header").empty()
-      }
-    })
-    e.preventDefault()
-  })
+  //       $("div.projects ol").append(response).val()
+  //       $("div.new-ajax-project").empty()
+  //       $("header").empty()
+  //     }
+  //   })
+  //   e.preventDefault()
+  // })
 
 
 })

@@ -1,5 +1,14 @@
+// let contractorList = {contractors: []}
 
-//var contractorid = 0
+// let contractorId = 0
+
+// class Contractor {
+//   constructor(name, email, address){
+//   this.id = ++contractorId
+//   this.name = name
+//   this.email = email
+//   this.address = address}
+// }
 
 
 $(function() {
@@ -32,11 +41,7 @@ $(function() {
   })
 
 
- function Contractor(id, name, email, address){
-  this.id = id
-  this.name = name
-  this.email = email
-  this.address = address}
+ 
   
   
   $(document).on("click", "a.contractor_show_list", function(e) {
