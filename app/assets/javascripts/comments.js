@@ -19,21 +19,19 @@ $(function() {
       }
     })
     
-       // e.preventDefault()
     })
 
     $(document).on("click", "a.new_ajax_comment", function(e) {
     e.preventDefault()
     e.stopImmediatePropagation()
     $.get($(e.target).attr('href'), function(resp){
-        //debugger
+        
         $("div.comment_form").empty()
         
       $("div.comment_form").append(resp).val()
       $("header").empty()
     })
-     // alert("New")
-     // e.preventDefault()
+     
   })
    }  
 )

@@ -16,6 +16,7 @@ $ (function() {
   $("a.ajax_new_project").on("click", function(e){
     $("div.new-ajax-project").empty()
     $.get("/projects/new", function(resp){
+      //debugger
       $("div.new-ajax-project").append(resp).val()
       
     })

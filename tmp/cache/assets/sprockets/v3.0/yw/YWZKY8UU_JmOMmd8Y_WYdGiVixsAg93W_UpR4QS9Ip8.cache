@@ -1,0 +1,12 @@
+{:uriI"žfile://app/assets/javascripts/templates/showContractor.hbs?type=text/x-handlebars-template&id=137310d0030a7a2775d8ac58e535f7b934e4e2dce02ff9f30e3c3cc1b7115190:ET:load_pathI"app/assets/javascripts;T:filenameI"8app/assets/javascripts/templates/showContractor.hbs;T:	nameI"templates/showContractor;T:logical_pathI"!templates/showContractor.hbs;T:content_typeI"text/x-handlebars-template;T:sourceI"<script id="showContractorTemplate" type="text/x-handlebars-template">
+  <div class="contractor-template-js" id="contractor-{{id}}">
+    <h2>Name: {{name}} </h2>
+    <h2>Address: {{address}}</h2>
+    <h2>Email: {{email}}</h2>
+    <h2>Group: {{email}}</h2>
+  </div>
+</script>;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Tprocessors:type=text/x-handlebars-template&file_type=text/x-handlebars-template;TTI"Ffile-digest://app/assets/javascripts/templates/showContractor.hbs;TTF:charsetI"
+utf-8;F:digest"%t|4/-öêfXëÖSW<ú,½—óîäB	ÝN•­…:lengthi:dependencies_digest"%Í>R„ÿâä56CÏ(¾¹—³È7táõÏ|p-í¾À:idI"E137310d0030a7a2775d8ac58e535f7b934e4e2dce02ff9f30e3c3cc1b7115190;F:
+mtimel+Äw¨Z

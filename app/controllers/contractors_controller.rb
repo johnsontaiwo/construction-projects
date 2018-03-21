@@ -15,6 +15,7 @@ class ContractorsController < ApplicationController
       f.html {render 'contractors/new', :layout => false}
       f.json {render json: @contractor}
       end
+    # render json: @contractor
   end
 
   def create
@@ -23,10 +24,11 @@ class ContractorsController < ApplicationController
       @contractor = Contractor.create(contractor_params)
       if @contractor.save
           #redirect_to  @contractor, notice: "You have successfully signed up as contractor with us"
-        respond_to do |f|
-          f.html {redirect_to  @contractor, notice: "You have successfully signed up as contractor with us", :layout => false}
-          f.json {render json: @contractor}
-      end
+      #   respond_to do |f|
+      #     f.html {redirect_to  @contractor, notice: "You have successfully signed up as contractor with us", :layout => false}
+      #     f.json {render json: @contractor}
+      # end
+      render json: @contractor
       else
         render 'new', alert: "Your email does not match "
      end
@@ -37,6 +39,7 @@ class ContractorsController < ApplicationController
 
   def show
     @projects = Project.where("project_end_date > ?", Date.today)
+    render json: @contractor
   end
  
   def edit 

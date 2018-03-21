@@ -10,6 +10,7 @@
         <%# if !current_user.admin?%>
           <%#= link_to "Placeholder link", new_contractor_path %> |  | <%#= #link_to "PLACEHOLDER TWO", users_path %>
         <%#end%>
+        
               
         <% if current_user.admin?%>
         <%= link_to "Create a new contractor", new_contractor_path, :class => "ajax_new_contractor" %> | <%= link_to " Contractors", contractors_path, :class => "contractor_list"%> | <%= link_to "Users", users_path %> | <%= link_to "Create a new project", new_project_path, :class => "ajax_new_project" if current_user.admin? %>

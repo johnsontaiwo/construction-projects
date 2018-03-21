@@ -35,9 +35,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
  gem 'active_model_serializers'
 
- group :assets do
-  gem 'handlebars_assets'
-end
+ 
+ gem 'handlebars_assets'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

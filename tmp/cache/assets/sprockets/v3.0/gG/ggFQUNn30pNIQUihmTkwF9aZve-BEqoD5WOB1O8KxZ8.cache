@@ -1,0 +1,12 @@
+{:uriI"©file://app/assets/javascripts/templates/contractor/new_contractor.hbs?type=text/x-handlebars-template&id=cd1d2568cc20e6f6428a11b30a0d45997ccdcca55233cc522b961f5ceccf0136:ET:load_pathI"app/assets/javascripts;T:filenameI"Capp/assets/javascripts/templates/contractor/new_contractor.hbs;T:	nameI"(templates/contractor/new_contractor;T:logical_pathI",templates/contractor/new_contractor.hbs;T:content_typeI"text/x-handlebars-template;T:sourceI"ñ
+<div class="contractor-template-js" id="contractor-{{id}}">
+ <h2>{{name}}</h2>
+ <h2>{{address}}</h2>
+ <h2>{{email}}</h2>
+ <h2>{{group}}</h2>
+ </div>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Tprocessors:type=text/x-handlebars-template&file_type=text/x-handlebars-template;TTI"Qfile-digest://app/assets/javascripts/templates/contractor/new_contractor.hbs;TTF:charsetI"
+utf-8;F:digest"%Ë¿Cçı¬≠úyuã§ÍIC‡¨ÀãVˇ›€e9*C¥«:lengthiñ:dependencies_digest"%ªÀJ>-$s¡±&Ω,ïx|”õ≤ZBò«}3H3ÅkÄ£:idI"Ecd1d2568cc20e6f6428a11b30a0d45997ccdcca55233cc522b961f5ceccf0136;F:
+mtimel+ ÆZ
