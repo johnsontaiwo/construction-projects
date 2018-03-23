@@ -1,5 +1,37 @@
 $ (function() {
+  projectList()
+  newProject()
+  createProject()
+  showProject()
+})
   
+
+  let projectContractorList = {projects: [], comments: [], contractors: []}
+  let projectId = 0
+  let commentId = 0
+  let contractorId = 0
+
+class Project{
+  constructor(atributes){
+    this.id = ++projectId
+    this.title = atributes.title
+    this.contract_number = atributes.contract_number
+    this.solicitation_number = atributes.solicitation_number
+    this.project_start_date = atributes.project_start_date
+    this.project_end_date = atributes.project_end_date
+    this.substantial_completion_date = atributes.substantial_completion_date
+    this.project_officer = atributes.project_officer
+    this.category = atributes.category
+    this.contract_amount = atributes.contract_amount
+    this.contract_amount = atributes.contract_amount
+    this.location = atributes.location
+  }
+}
+
+
+
+
+  function projectList() {
   $("a.project_list").on("click", function(e) {
   
      $("div.projects ol").empty()
@@ -10,9 +42,9 @@ $ (function() {
      
         e.preventDefault()
       })
-    
+    }
 
-
+  function newProject(){
   $("a.ajax_new_project").on("click", function(e){
     $("div.new-ajax-project").empty()
     $.get("/projects/new", function(resp){
@@ -22,11 +54,11 @@ $ (function() {
     })
     
     e.preventDefault()
-  })
+    })
+  }
 
 
-
-
+function createProject() {
   $(document).on("submit", "#new_project", function(e){
     //alert("Hey")
     $.ajax({
@@ -43,8 +75,9 @@ $ (function() {
     })
     e.preventDefault()
   })
+ }  
    
-   
+  function showProject(){
   $(document).on("click", "a.project_show_list", function(e){
    $.get( $(e.target).attr('href'), function(resp) {
     //console.log(resp)
@@ -52,10 +85,10 @@ $ (function() {
    $("div.projects ol").empty()
    $("header").empty()
    $("a.ajax_new_project").hide()
-  })
+      })
     e.preventDefault();
-  })
-
+    })
+  }
   // $(document).on("click", "a.project_edit", function(e) {
    
   //  $.get( $(e.target).attr('href'), function(resp) {
@@ -88,7 +121,7 @@ $ (function() {
   // })
 
 
-})
+
 
 
 

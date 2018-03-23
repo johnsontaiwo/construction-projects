@@ -7,6 +7,7 @@ class ContractorsController < ApplicationController
     f.html {render 'contractors/index', :layout => false}
     f.json {render json: @contractors}
     end
+     # render json: @contractors
   end
 
   def new

@@ -11,7 +11,7 @@ indexContractors();
 let contractorProjectList = {contractors: [], projects: []}
 let contractorId = 0
 let projectId = 0
-let newContractorTemplate 
+
 
 class Contractor {
   constructor(attributes) {
@@ -57,8 +57,7 @@ function newContractor() {
     $("div.contractors ol").empty()
     $.get('/contractors/new', function(resp) {
       //debugger
-      // var contractor = new Contractor(resp)
-      
+       var contractor = new Contractor(resp)
        $("div.new-ajax-contractor").append(resp).val()
       //debugger
     })
@@ -94,9 +93,13 @@ function createContractor(){
 function indexContractors(){
   $("a.contractor_list").on("click", function(e) {
     $("div.contractors ol").empty()
-    $.get("/contractors", function(resp) {
-      $("div.contractors ol").append(resp).val()
-        //resp.data.forEach(function(data))
+    $.get("/contractors", function(resp){
+       
+         var new_Contractor = new Contractor(contractor) 
+         $("div.contractors ol").append(resp).val()
+      
+         debugger
+      
       })
     e.preventDefault();
   })
@@ -111,7 +114,7 @@ function indexContractors(){
     var contractor = new Contractor(resp)
    $("div.contractor").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
    //$("div.contractor").append(resp).val()
-   debugger
+   //debugger
    $("div.contractors ol").empty()
    $("header").empty()
     //debugger
