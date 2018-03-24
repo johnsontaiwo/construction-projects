@@ -26,6 +26,19 @@ class Project {
 
     projectContractorList.projects.push(this)
   }
+
+  contractors() {
+    return projectContractorList.contractors.filter(function(contractor) {
+      return contractor.projectId === this.id
+    }.bind(this))
+  }
+
+  comments() {
+    return projectContractorList.comments.filter(function(comment) {
+      return comment.projectId === this.id
+    }.bind(this))
+  }
+
 }
 
 
@@ -38,6 +51,8 @@ class Project {
      $.get("/projects", function(resp) {
           $("div.projects ol").append(resp).val()
           $("div.project").empty()
+          $("div.project-contractors ol").empty()
+          $("div.project-comments ol").empty()
        })
      
         e.preventDefault()
@@ -80,84 +95,27 @@ function createProject() {
    
   function showProject(){
   $(document).on("click", "a.project_show_list", function(e){
-   $.get( $(e.target).attr('href'), function(resp) {
-    //console.log(resp)
-   $("div.project").append(resp).val()
-   $("div.projects ol").empty()
-   $("header").empty()
-   $("a.ajax_new_project").hide()
+    $.get( $(e.target).attr('href'), function(resp) {
+      var project = new Project(resp);
+      var contractorsList = resp.contractors;
+      $("div.project-contractors ol").prepend(`<h2>Contractors</h2>`);
+      contractorsList.forEach(function(data) {
+      $("div.project-contractors ol").append( `<h4>Name: ${data.name}</h4> <h4>Adrress: ${data.address}</h4> <h4>Email: ${data.email}</h4> <h4>Group: ${data.group}</h4><br></br>`)
+      });
+      var commentsList = resp.comments;
+      $("div.project-comments ol").prepend(`<h2>Comments</h2>`);
+      commentsList.forEach(function(data) {
+      $("div.project-comments ol").append( `<h4>Content: ${data.content}</h4><br></br>`)
+      });
+      $("div.project").append(`<h4>Title: ${project.title}</h4> <h4>Contract Number: ${project.contract_number}</h4> <h4>Solicitation Number: ${project.solicitation_number}</h4> <h4>Start Date: ${project.project_start_date}</h4> <h4>End Date: ${project.project_end_date}</h4> <h4>Substantial Completion Date: ${project.substantial_completion_date}</h4> <h4>Project Officer: ${project.project_officer}</h4> <h4>Category: ${project.category}</h4> <h4>Contract Amount: ${project.contract_amount}</h4> <h4>Location: ${project.location}</h4>`)
+   
+        //debugger
+      $("div.projects ol").empty()
+      //$("header").empty()
+  
+      $("a.ajax_new_project").hide()
       })
-    e.preventDefault();
+      e.preventDefault();
     })
   }
-  // $(document).on("click", "a.project_edit", function(e) {
-   
-  //  $.get( $(e.target).attr('href'), function(resp) {
   
-      
-  //    $("body").append(resp).val()
-      
-  // //  $("header").empty()
-  // //  $("a.ajax_new_project").hide()
-  //   })
-  //   e.preventDefault();
-  //  })
-
-
-
-  // $(document).on("submit", ".edit_project", function(e){
-  //   //alert("Hey")
-  //   $.ajax({
-  //     type: 'PATCH',
-  //     url: this.action,
-  //     data: $(this).serialize(),
-  //     success: function(response) {
-        
-  //       $("div.projects ol").append(response).val()
-  //       $("div.new-ajax-project").empty()
-  //       $("header").empty()
-  //     }
-  //   })
-  //   e.preventDefault()
-  // })
-
-
-
-
-
-
-
-
-//         resp.forEach(function(project) {
-      //    $("div.projects_contractors ol").append( "<li>" + project.title + "</li>" ).val()
-      //    //$("div.projects_contractors ol").append(resp).val()
-      //  })
-       
-        
-     // }) 
-     
-        
-     //$("div.projects_contractors ol").html(output)
-     //var data = resp.data.forEach(function(p) {$("div.projects_contractors ol").append(resp).val()})
-      // resp.forEach(function(project) {
-      //   $("div.projects_contractors ol").append("<li>" + project.title + "</li>").val()
-       
-     //$("div.projects_contractors ol").append(output)
-         //$("div.projects_contractors ol").append("<li>" + project.title + "</li>").val()
-// 
-//     function projectShow() {
-//     $("a.project_show").on("click", function(e) {
-//         alert("Sure");
-//         e.preventDefault();
-//       })
-//      // $.get(`/projects/${projectId}`, function(resp) {
-//      //  $("body").append(resp).val()}
-//      // ) 
-//       //var respArray = resp.toArray()
-//      //$("body").append(resp).val()
-//        //alert("Sure")
-        
-
-// }
-
-// // 

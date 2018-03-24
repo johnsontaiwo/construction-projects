@@ -35,11 +35,11 @@ class ProjectsController < ApplicationController
 
   def show
     @comment = @project.comments
-    respond_to do |f|
-    f.html {render 'projects/show'}
-    f.json {render json: @project}
-    end
-    # render json: @project
+    # respond_to do |f|
+    # f.html {render 'projects/show'}
+    # f.json {render json: @project}
+    # end
+       render json: @project
   end
 
   def edit
