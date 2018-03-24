@@ -1,30 +1,30 @@
-$ (function() {
-  projectList()
-  newProject()
-  createProject()
+$(document).ready(function(){
+  newProject();
+  projectList();
+  createProject();
   showProject()
-})
+});
   
 
   let projectContractorList = {projects: [], comments: [], contractors: []}
-  let projectId = 0
   let commentId = 0
-  let contractorId = 0
+  let projectId = 0
 
-class Project{
-  constructor(atributes){
+class Project {
+  constructor(attributes){
     this.id = ++projectId
-    this.title = atributes.title
-    this.contract_number = atributes.contract_number
-    this.solicitation_number = atributes.solicitation_number
-    this.project_start_date = atributes.project_start_date
-    this.project_end_date = atributes.project_end_date
-    this.substantial_completion_date = atributes.substantial_completion_date
-    this.project_officer = atributes.project_officer
-    this.category = atributes.category
-    this.contract_amount = atributes.contract_amount
-    this.contract_amount = atributes.contract_amount
-    this.location = atributes.location
+    this.title = attributes.title
+    this.contract_number = attributes.contract_number
+    this.solicitation_number = attributes.solicitation_number
+    this.project_start_date = attributes.project_start_date
+    this.project_end_date = attributes.project_end_date
+    this.substantial_completion_date = attributes.substantial_completion_date
+    this.project_officer = attributes.project_officer
+    this.category = attributes.category
+    this.contract_amount = attributes.contract_amount
+    this.location = attributes.location
+
+    projectContractorList.projects.push(this)
   }
 }
 
@@ -66,8 +66,9 @@ function createProject() {
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
+        var project = new Project(response)
+        $("div.projects ol").append(`<h4>Title: ${project.title}</h4> <h4>Contract Number: ${project.contract_number}</h4> <h4>Solicitation Number: ${project.solicitation_number}</h4> <h4>Start Date: ${project.project_start_date}</h4> <h4>End Date: ${project.project_end_date}</h4> <h4>Substantial Completion Date: ${project.substantial_completion_date}</h4> <h4>Project Officer: ${project.project_officer}</h4> <h4>Category: ${project.category}</h4> <h4>Contract Amount: ${project.contract_amount}</h4> <h4>Location: ${project.location}</h4>`)
         //debugger
-        $("div.projects ol").append(response).val()
         $("div.new-ajax-project").empty()
         $("header").empty()
         $("a.new_ajax_comment").hide()
@@ -159,13 +160,4 @@ function createProject() {
 
 // }
 
-// // $(function() {
-// // function showProject(id) {
-// //   projectId = id
-// //   $("a.project_show").on("click", function(e) {
-// //     alert("sure")
-// //     e.preventDefault()
-// //   })
-// // }
-// // }) 
-// // $("body").append(project).val()
+// // 

@@ -10,7 +10,7 @@ indexContractors();
 
 let contractorProjectList = {contractors: [], projects: []}
 let contractorId = 0
-let projectId = 0
+// let projectId = 0
 
 
 class Contractor {
@@ -57,7 +57,7 @@ function newContractor() {
     $("div.contractors ol").empty()
     $.get('/contractors/new', function(resp) {
       //debugger
-       var contractor = new Contractor(resp)
+       //var contractor = new Contractor(resp)
        $("div.new-ajax-contractor").append(resp).val()
       //debugger
     })
@@ -79,7 +79,7 @@ function createContractor(){
         var contractor = new Contractor(response)
          //var renderContractor = HandlebarsTemplates['/contractor/new_contractor'](contractor)
 
-     $("div.contractors").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
+     $("div.contractor-new").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
          //debugger
         $("div.new-ajax-contractor").empty()
         //$("header").empty()
@@ -91,14 +91,16 @@ function createContractor(){
 }
 
 function indexContractors(){
-  $("a.contractor_list").on("click", function(e) {
+  $(document).on("click", "a.contractor_list", function(e) {
     $("div.contractors ol").empty()
     $.get("/contractors", function(resp){
        
-         var new_Contractor = new Contractor(contractor) 
-         $("div.contractors ol").append(resp).val()
+         //var new_Contractor = new Contractor(contractor) 
+          $("div.contractor-new").empty()
+          $("div.contractor").empty()
+          $("div.contractors ol").append(resp).val()
       
-         debugger
+         //debugger
       
       })
     e.preventDefault();
