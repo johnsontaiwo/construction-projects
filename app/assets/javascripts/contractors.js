@@ -37,6 +37,8 @@ function newContractor() {
     $("div.contractors ol").empty()
     $.get('/contractors/new', function(resp) {
        $("div.new-ajax-contractor").append(resp).val()
+       $("div.projects ol").empty()
+       $("div.new-ajax-project").empty()
     })
     
     e.preventDefault()
@@ -54,6 +56,7 @@ function createContractor(){
         var contractor = new Contractor(response)
      $("div.contractor-new").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
         $("div.new-ajax-contractor").empty()
+       
         //$("header").empty()
       }
     })
@@ -70,6 +73,7 @@ function indexContractors(){
          //var new_Contractor = new Contractor(contractor) 
           $("div.contractor-new").empty()
           $("div.contractor").empty()
+          $("div.projects ol").empty()
           $("div.contractors ol").append(resp).val()
       })
     e.preventDefault();
@@ -89,7 +93,7 @@ function indexContractors(){
       $("div.project-contractors ol").append(`<li><h4>Title: ${data.title}</h4> <h4>Contract Number: ${data.contract_number}</h4> <h4>Solicitation Number: ${data.solicitation_number}</h4> <h4>Start Date: ${data.project_start_date}</h4> <h4>End Date: ${data.project_end_date}</h4> <h4>Substantial Completion Date: ${data.substantial_completion_date}</h4> <h4>Project Officer: ${data.project_officer}</h4> <h4>Category: ${data.category}</h4> <h4>Contract Amount: ${data.contract_amount}</h4> <h4>Location: ${data.location}</h4></li>`)
       });
    $("div.contractor").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
-      debugger
+
    $("div.contractors ol").empty()
    $("header").empty()
   })

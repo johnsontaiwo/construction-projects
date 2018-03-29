@@ -29,32 +29,7 @@ class Project {
   projectTitle() {
     return "Non-executed Project"
   }
-
-  // comments() {
-  //   return projectContractorList.comments.filter(function(comment) {
-  //     return comment.projectId === this.id
-  //   }.bind(this))
-  // }
-
 }
-
-// class Comments {
-//   constructor(project){
-//     this.id = ++commentId
-//     this.content = attributes.content
-//     if (project){
-//       this.projectId = project.id
-//     }
-
-//     projectContractorList.comments.push(this)
-//   }
-//     projects(){
-//       return projectContractorList.projects.find(function(project){
-//         return project.id === this.projectId
-//       }.bind(this))
-//     }
-//   }  
-
 
  
 
@@ -69,6 +44,9 @@ class Project {
           $("div.project-contractors ol").empty()
           $("div.project-comments ol").empty()
            $("div.contractor").empty()
+           $("div.contractors ol").empty()
+           $("div.new-ajax-contractor").empty()
+           $("div.new-ajax-project").empty()
        })
      
         e.preventDefault()
@@ -80,6 +58,8 @@ class Project {
     $("div.new-ajax-project").empty()
     $.get("/projects/new", function(resp){
       $("div.new-ajax-project").append(resp).val()
+      $("div.new-ajax-contractor").empty()
+      $("div.projects ol").empty()
      })    
     e.preventDefault()
     })
