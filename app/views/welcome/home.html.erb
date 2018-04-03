@@ -65,10 +65,7 @@ for the list of our current projects in progress:</h3>  <%= link_to "Return", ro
 
 <div class="project-edit"></div>
 
- <%# @projects.each do |project| %>
- <!-- <li> -->
-<%#= link_to "#{project.title}", project_path(project), :class => "project_show" %>
-<%# end %>
+ 
 
 <% @contractors.all.each do |contractor| %>
 <% if current_user.email == contractor.email  %>
@@ -80,11 +77,12 @@ for the list of our current projects in progress:</h3>  <%= link_to "Return", ro
 <% end %>
 
 
+
 <% end %>
 
 
 
 
-
-
 </div>
+
+

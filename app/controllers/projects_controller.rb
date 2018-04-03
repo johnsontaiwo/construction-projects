@@ -22,24 +22,25 @@ class ProjectsController < ApplicationController
     @project = Project.create(project_params)
     #raise project_params.inspect
       if @project.save
+        render json: @project
+        else
+        render "new"
+      end
+    end
         #redirect_to @project
     #     respond_to do |f|
     #       f.html {redirect_to @project, :layout => false}
     #       f.json {render json: @projects}
-    render json: @project
+    
     # end
-      else
-        render "new"
-      end
-    end
-
+      
   def show
     @comment = @project.comments
+    render json: @project
     # respond_to do |f|
     # f.html {render 'projects/show'}
     # f.json {render json: @project}
     # end
-        render json: @project
   end
 
   def edit

@@ -22,10 +22,8 @@ class Contractor {
   contractorProjectList.contractors.push(this)
 }
 
-  projects() {
-    return contractorProjectList.projects.filter(function(project){
-      return project.contractorId === this.id
-    }.bind(this))
+  contractorStatus() {
+    return "New Contractor"
   }
 }
 
@@ -54,10 +52,12 @@ function createContractor(){
       data: $(this).serialize(),
       success: function(response) {        
         var contractor = new Contractor(response)
-     $("div.contractor-new").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
+        var status = contractor.contractorStatus()
+        $("div.projects ol").prepend(`<h4 class="projectHeading">${status}</h4>`);
+        $("div.contractor-new").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
         $("div.new-ajax-contractor").empty()
-       
-        //$("header").empty()
+  
+        $("header").empty()
       }
     })
 
@@ -69,16 +69,27 @@ function indexContractors(){
   $(document).on("click", "a.contractor_list", function(e) {
     $("div.contractors ol").empty()
     $.get("/contractors", function(resp){
-       
-         //var new_Contractor = new Contractor(contractor) 
+        //var new_Contractor = new Contractor(contractor) 
           $("div.contractor-new").empty()
           $("div.contractor").empty()
-          $("div.projects ol").empty()
           $("div.contractors ol").append(resp).val()
-      })
+          emptyAllDivs()
+        })
     e.preventDefault();
   })
 
+}
+
+function emptyAllDivs() {
+  $("div.new-ajax-contractor").empty()
+  $("div.projects ol").empty()
+  $("div.project").empty()
+  $("div.project-contractors ol").empty()
+  $("div.project-contractors ol").empty()
+  $("div.project-comments ol").prepend()
+  $("div.project-comments ol").empty()
+  $("div.new-ajax-project").empty()
+  $(".edit-profile").hide()
 }
  
   
@@ -99,13 +110,12 @@ function indexContractors(){
   })
     e.preventDefault();
   })
+}
 
- }
-
-  $(document).on("click", "a.edit_contractor", function(e) {
-    alert("Edit")
-    e.preventDefault()
-  })
+  // $(document).on("click", "a.edit_contractor", function(e) {
+  //   alert("Edit")
+  //   e.preventDefault()
+  // })
    
   
 

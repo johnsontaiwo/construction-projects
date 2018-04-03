@@ -5,10 +5,10 @@
         <% if user_signed_in?  %>
         <%= link_to "Sign out", destroy_user_session_path, method: "delete" %> |
         <%= link_to "Signed in as #{current_user.email}", user_session_path %> | 
-        <%= link_to 'Edit your profile', edit_user_registration_path %> |
+        <%= link_to 'Edit your profile', edit_user_registration_path, :class => "edit-profile" %> |
         
         <%# if !current_user.admin?%>
-          <%#= link_to "Placeholder link", new_contractor_path %> |  | <%#= #link_to "PLACEHOLDER TWO", users_path %>
+          <%#= link_to "Placeholder link", new_contractor_path %> |  | <%#= link_to "PLACEHOLDER TWO", users_path %>
         <%#end%>
         
               
