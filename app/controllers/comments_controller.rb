@@ -4,35 +4,34 @@
   def index
     @projects = Project.all
     if params[:project_id]
-      @comments = @project.comments.all
-      redirect_to @comments
+        @comments = @project.comments.all
+        redirect_to @comments
     end
   end
 
+  
   def new
     @comment = Comment.new
     if params[:project_id]
-    @comment = @project.comments.build
-    respond_to do |f|
-      f.html {render 'comments/new', :layout => false}
-      f.json {render json: @comment}
+      @comment = @project.comments.build
+      respond_to do |f|
+        f.html {render 'comments/new', :layout => false}
+        f.json {render json: @comment}
       end
-      #render json: @comment
     end
   end
 
+  
   def create
     if params[:project_id]
       @comment = @project.comments.create(comment_params)
-      #binding.pry
       if @comment.save
-      #redirect_to @project
-      respond_to do |f|
-      f.html {redirect_to @project, :layout => false}
-      f.json {render json: @comment}
-      end
+        respond_to do |f|
+          f.html {redirect_to @project, :layout => false}
+          f.json {render json: @comment}
+        end
       else
-      render "new"
+        render "new"
       end
     end
   end
@@ -43,10 +42,12 @@
     end
   end
   
+  
   def edit
     @comment = @project.comments.find_by(:id => params[:id])
   end
 
+  
   def update
     if params[:project_id]
       @comment = @project.comments.find(params[:id])
@@ -58,6 +59,7 @@
     end
   end
 
+  
   def destroy
     @comment = @project.comments.find_by(:id => params[:id])
     @comment.destroy
@@ -65,11 +67,13 @@
     redirect_to @project
   end
 
+  
   private
   
   def find_project
     @project = Project.find_by(:id => params[:project_id])
   end
+  
   
   def comment_params
     params.require(:comment).permit(:content)

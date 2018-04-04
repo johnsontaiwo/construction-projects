@@ -1,13 +1,12 @@
 class ContractorsController < ApplicationController
  before_action :find_contractor, only: [:show, :edit, :update, :destroy]
- #skip_before_filter :verify_authenticity_token, :only => :create
+ skip_before_filter :verify_authenticity_token, :only => :create
   def index
     @contractors = Contractor.all
     respond_to do |f|
     f.html {render 'contractors/index', :layout => false}
     f.json {render json: @contractors}
     end
-     # render json: @contractors
   end
 
   def new
@@ -16,7 +15,6 @@ class ContractorsController < ApplicationController
       f.html {render 'contractors/new', :layout => false}
       f.json {render json: @contractor}
       end
-    # render json: @contractor
   end
 
   def create
@@ -24,15 +22,10 @@ class ContractorsController < ApplicationController
     if current_user
       @contractor = Contractor.create(contractor_params)
       if @contractor.save
-          #redirect_to  @contractor, notice: "You have successfully signed up as contractor with us"
-      #   respond_to do |f|
-      #     f.html {redirect_to  @contractor, notice: "You have successfully signed up as contractor with us", :layout => false}
-      #     f.json {render json: @contractor}
-      # end
-      render json: @contractor
+        render json: @contractor
       else
         render 'new', alert: "Your email does not match "
-     end
+      end
     else
       redirect_to '/', alert: "**You must sign up as a user first.**"
     end

@@ -65,31 +65,8 @@
   <% end %>
   
 </div><br />
- 
- <div class="contractor-info"><h3>Create a new Contractor</h3></div>
 
-<%= f.fields_for :contractors, @project.contractors.build do |contractors_fields| %>
-
-<%= contractors_fields.label :name %>
-<%= contractors_fields.text_field :name.downcase %>
-<br />
-
-<div class="field">
-<%= contractors_fields.label :address %>
-<%= contractors_fields.text_field :address %>
-</div><br />
-
-<div class="field">
-<%= contractors_fields.label :email %>
-<%= contractors_fields.text_field :email %>
-</div><br />
-
-<div class="field">
-<%= contractors_fields.label :group %>
-<%= contractors_fields.select "group", options_for_select(["Prime", "Sub"]), include_blank: true %></div>
- <%end%><br />
-
- 
+  
 
 <div class="actions">
   <%= f.submit %><br />

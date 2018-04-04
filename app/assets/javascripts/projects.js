@@ -29,6 +29,12 @@ class Project {
   projectStatus() {
     return "Non-executed Project"
   }
+
+  contractors() {
+    return projectContractorList.contractors.filter(function(c) {
+      return c.projectId === this.id
+    }.bind(this))
+  }
 }
 
  
@@ -84,7 +90,7 @@ function createProject() {
           $("div.project-contractors ol").append( `<h4>Name: ${data.name}</h4> <h4>Adrress: ${data.address}</h4> <h4>Email: ${data.email}</h4> <h4>Group: ${data.group}</h4><br></br>`)
         }); 
         $("div.projects ol").prepend(`<h4 class="projectHeading">${projectHeading}</h4>`);
-        debugger
+        //debugger
         $("div.projects ol").append(`<h4>Title: ${project.title}</h4> <h4>Contract Number: ${project.contract_number}</h4> <h4>Solicitation Number: ${project.solicitation_number}</h4> <h4>Start Date: ${project.project_start_date}</h4> <h4>End Date: ${project.project_end_date}</h4> <h4>Substantial Completion Date: ${project.substantial_completion_date}</h4> <h4>Project Officer: ${project.project_officer}</h4> <h4>Category: ${project.category}</h4> <h4>Contract Amount: ${project.contract_amount}</h4> <h4>Location: ${project.location}</h4>`)
         $("div.new-ajax-project").empty()
         $("header").empty()
