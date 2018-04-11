@@ -54,9 +54,11 @@ function createContractor(){
         var contractor = new Contractor(response)
         var status = contractor.contractorStatus()
         $("div.projects ol").prepend(`<h4 class="projectHeading">${status}</h4>`);
-        $("div.contractor-new").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
+        $("div.contractor-new").append(`<h4>Name: ${contractor.name}</h4> 
+          <h4>Email: ${contractor.email}</h4> 
+          <h4>Address: ${contractor.address}</h4> 
+          <h4>Group: ${contractor.group}</h4>`)
         $("div.new-ajax-contractor").empty()
-  
         $("header").empty()
       }
     })
@@ -101,7 +103,16 @@ function emptyAllDivs() {
     var projectsList = resp.projects;
       $("div.project-contractors ol").prepend(`<h2>Projects</h2>`);
       projectsList.forEach(function(data) {
-      $("div.project-contractors ol").append(`<li><h4>Title: ${data.title}</h4> <h4>Contract Number: ${data.contract_number}</h4> <h4>Solicitation Number: ${data.solicitation_number}</h4> <h4>Start Date: ${data.project_start_date}</h4> <h4>End Date: ${data.project_end_date}</h4> <h4>Substantial Completion Date: ${data.substantial_completion_date}</h4> <h4>Project Officer: ${data.project_officer}</h4> <h4>Category: ${data.category}</h4> <h4>Contract Amount: ${data.contract_amount}</h4> <h4>Location: ${data.location}</h4></li>`)
+      $("div.project-contractors ol").append(`<li><h4>Title: ${data.title}</h4> 
+        <h4>Contract Number: ${data.contract_number}</h4> 
+        <h4>Solicitation Number: ${data.solicitation_number}</h4> 
+        <h4>Start Date: ${data.project_start_date}</h4> 
+        <h4>End Date: ${data.project_end_date}</h4> 
+        <h4>Substantial Completion Date: ${data.substantial_completion_date}</h4> 
+        <h4>Project Officer: ${data.project_officer}</h4> 
+        <h4>Category: ${data.category}</h4> 
+        <h4>Contract Amount: ${data.contract_amount}</h4> 
+        <h4>Location: ${data.location}</h4></li>`)
       });
    $("div.contractor").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
 
@@ -112,10 +123,7 @@ function emptyAllDivs() {
   })
 }
 
-  // $(document).on("click", "a.edit_contractor", function(e) {
-  //   alert("Edit")
-  //   e.preventDefault()
-  // })
+  
    
   
 
