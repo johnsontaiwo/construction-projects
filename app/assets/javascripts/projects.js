@@ -58,14 +58,12 @@ class Project {
 
   function projectList() {
   $(document).on("click", "a.project_list", function(e) {
-  
-    $("div.projects ol").empty()
+  $("div.projects ol").empty()
      $.get("/projects", function(resp) {
-      
-       resp.forEach(function(r){
+      resp.forEach(function(r){
         const newProject = new Project(r)
         const newHtml = newProject.renderHTML()
-         $("div.projects ol").append(newHtml)
+          $("div.projects ol").append(newHtml)
           })
           $("div.project").empty()
           $("div.project-contractors ol").empty()
@@ -76,16 +74,13 @@ class Project {
           $("div.new-ajax-project").empty()
           $("#projects").hide()
        })
-      
-        e.preventDefault()
+      e.preventDefault()
       })
     }
  
  function showProject(){
-  
-  $(document).on("click", "a.showList", function(e){
-     
-     $.get( $(e.target).attr('href'), function(resp) {
+    $(document).on("click", "a.showList", function(e){
+      $.get( $(e.target).attr('href'), function(resp) {
       var project = new Project(resp);
       const allAtributes = project. projectAttributes()
       var contractorsList = resp.contractors;
@@ -106,10 +101,9 @@ class Project {
       $("a.ajax_new_project").hide()
       
        })
-  e.preventDefault()
+      e.preventDefault()
     })
-
-  }
+}
 
  
 
