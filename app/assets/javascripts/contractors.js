@@ -23,7 +23,7 @@ let contractorId = 0
 
 class Contractor {
   constructor(attributes) {
-  this.id = ++contractorId
+  this.id = attributes.id
   this.name = attributes.name
   this.email = attributes.email
   this.address = attributes.address
@@ -36,18 +36,18 @@ class Contractor {
     return "New Contractor"
   }
 
-  // renderHTML() {
-  //   return `<li><h4>Title: ${this.title}</h4> 
-  //       <h4>Contract Number: ${data.contract_number}</h4> 
-  //       <h4>Solicitation Number: ${data.solicitation_number}</h4> 
-  //       <h4>Start Date: ${data.project_start_date}</h4> 
-  //       <h4>End Date: ${data.project_end_date}</h4> 
-  //       <h4>Substantial Completion Date: ${data.substantial_completion_date}</h4> 
-  //       <h4>Project Officer: ${data.project_officer}</h4> 
-  //       <h4>Category: ${data.category}</h4> 
-  //       <h4>Contract Amount: ${data.contract_amount}</h4> 
-  //       <h4>Location: ${data.location}</h4></li>`
-  // }
+  contractorAttributes() {
+    return `<li><h4>Name:    ${this.name}</h4> 
+                <h4>Email:   ${this.email}</h4> 
+                <h4>Address: ${this.address}</h4> 
+                <h4>Group:   ${this.group}</h4></li>`
+  }
+
+  renderContractors() {
+    return `<a href="/contractors/${this.id}" class="contractorList">  ${this.name}</a>`
+  }
+
+  
 }
 
 // const newProject = new Project(r)
@@ -78,12 +78,10 @@ function createContractor(){
       data: $(this).serialize(),
       success: function(response) {        
         var contractor = new Contractor(response)
+        var $html = contractor.contractorAttributes()
         var status = contractor.contractorStatus()
         $("div.projects ol").prepend(`<h4 class="projectHeading">${status}</h4>`);
-        $("div.contractor-new").append(`<h4>Name: ${contractor.name}</h4> 
-          <h4>Email: ${contractor.email}</h4> 
-          <h4>Address: ${contractor.address}</h4> 
-          <h4>Group: ${contractor.group}</h4>`)
+        $("div.contractor-new").append($html)
         $("div.new-ajax-contractor").empty()
         $("header").empty()
       }
@@ -96,8 +94,12 @@ function createContractor(){
 function indexContractors(){
   $(document).on("click", "a.contractor_list", function(e) {
     $("div.contractors ol").empty()
-    $.get("/contractors", function(resp){
-        //var new_Contractor = new Contractor(contractor) 
+    $.get("/contractors", function(resp){ 
+         resp.forEach(function(r){         
+           const newContractor = new Contractor(r)
+           const allContractors = newContractor.renderContractors()
+           $("div.contractors ol").append(allContractors)
+         })
           $("div.contractor-new").empty()
           $("div.contractor").empty()
           $("div.contractors ol").append(resp).val()
@@ -122,10 +124,10 @@ function emptyAllDivs() {
  
   
   function showContractor() {
-  $(document).on("click", "a.contractor_show_list", function(e) {
-    
-  $.get( $(e.target).attr('href'), function(resp) {
+  $(document).on("click", "a.contractorList", function(e) {
+    $.get( $(e.target).attr('href'), function(resp) {
     var contractor = new Contractor(resp)
+    var contractorAtributes = contractor.contractorAttributes()
     var projectsList = resp.projects;
       $("div.project-contractors ol").prepend(`<h2>Projects</h2>`);
       projectsList.forEach(function(data) {
@@ -140,11 +142,10 @@ function emptyAllDivs() {
         <h4>Contract Amount: ${data.contract_amount}</h4> 
         <h4>Location: ${data.location}</h4></li>`)
       });
-      //debugger
-   $("div.contractor").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
-
-   $("div.contractors ol").empty()
-   $("header").empty()
+      
+    $("div.contractor").append(contractorAtributes)
+    $("div.contractors ol").empty()
+    $("header").empty()
   })
     e.preventDefault();
   })

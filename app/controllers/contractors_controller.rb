@@ -3,10 +3,9 @@ class ContractorsController < ApplicationController
  skip_before_filter :verify_authenticity_token, :only => :create
   def index
     @contractors = Contractor.all
-    respond_to do |f|
-    f.html {render 'contractors/index', :layout => false}
-    f.json {render json: @contractors}
-    end
+    #respond_to do |f|
+    #f.html {render 'contractors/index', :layout => false}
+    render json: @contractors
   end
 
   def new
