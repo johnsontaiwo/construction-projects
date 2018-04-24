@@ -4,8 +4,18 @@ createContractor();
 showContractor();
 indexContractors();
 });
-
-
+// <a href="#" class="showList">  ${this.title}</a>
+// // project_show_list
+// <li><h4>Title: ${this.title}</h4> 
+//         <h4>Contract Number: ${this.contract_number}</h4> 
+//         <h4>Solicitation Number: ${this.solicitation_number}</h4> 
+//         <h4>Start Date: ${this.project_start_date}</h4> 
+//         <h4>End Date: ${this.project_end_date}</h4> 
+//         <h4>Substantial Completion Date: ${this.substantial_completion_date}</h4> 
+//         <h4>Project Officer: ${this.project_officer}</h4> 
+//         <h4>Category: ${this.category}</h4> 
+//         <h4>Contract Amount: ${this.contract_amount}</h4> 
+//         <h4>Location: ${this.location}</h4></li>`
 
 let contractorProjectList = {contractors: [], projects: []}
 let contractorId = 0
@@ -25,8 +35,24 @@ class Contractor {
   contractorStatus() {
     return "New Contractor"
   }
+
+  // renderHTML() {
+  //   return `<li><h4>Title: ${this.title}</h4> 
+  //       <h4>Contract Number: ${data.contract_number}</h4> 
+  //       <h4>Solicitation Number: ${data.solicitation_number}</h4> 
+  //       <h4>Start Date: ${data.project_start_date}</h4> 
+  //       <h4>End Date: ${data.project_end_date}</h4> 
+  //       <h4>Substantial Completion Date: ${data.substantial_completion_date}</h4> 
+  //       <h4>Project Officer: ${data.project_officer}</h4> 
+  //       <h4>Category: ${data.category}</h4> 
+  //       <h4>Contract Amount: ${data.contract_amount}</h4> 
+  //       <h4>Location: ${data.location}</h4></li>`
+  // }
 }
 
+// const newProject = new Project(r)
+// const newHtml = newProject.renderHTML()
+// .append(newHtml)
   
 
 function newContractor() {
@@ -114,6 +140,7 @@ function emptyAllDivs() {
         <h4>Contract Amount: ${data.contract_amount}</h4> 
         <h4>Location: ${data.location}</h4></li>`)
       });
+      //debugger
    $("div.contractor").append(`<h4>Name: ${contractor.name}</h4> <h4>Email: ${contractor.email}</h4> <h4>Address: ${contractor.address}</h4> <h4>Group: ${contractor.group}</h4>`)
 
    $("div.contractors ol").empty()
