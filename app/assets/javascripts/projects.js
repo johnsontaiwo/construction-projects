@@ -13,14 +13,14 @@ class Project {
   constructor(attributes){
     this.id = attributes.id
     this.title = attributes.title
-    this.contract_number = attributes.contract_number
-    this.solicitation_number = attributes.solicitation_number
-    this.project_start_date = attributes.project_start_date
-    this.project_end_date = attributes.project_end_date
-    this.substantial_completion_date = attributes.substantial_completion_date
-    this.project_officer = attributes.project_officer
+    this.contractNumber = attributes.contract_number
+    this.solicitationNumber = attributes.solicitation_number
+    this.projectStartDate = attributes.project_start_date
+    this.projectEndDate = attributes.project_end_date
+    this.substantialCompletionDate = attributes.substantial_completion_date
+    this.projectOfficer = attributes.project_officer
     this.category = attributes.category
-    this.contract_amount = attributes.contract_amount
+    this.contractAmount = attributes.contract_amount
     this.location = attributes.location
 
     //projectContractorList.projects.push(this)
@@ -42,14 +42,14 @@ class Project {
 
   projectAttributes() {
     return `<h4>Title: ${this.title}</h4> 
-        <h4>Contract Number: ${this.contract_number}</h4> 
-        <h4>Solicitation Number: ${this.solicitation_number}</h4> 
-        <h4>Start Date: ${this.project_start_date}</h4> 
-        <h4>End Date: ${this.project_end_date}</h4> 
-        <h4>Substantial Completion Date: ${this.substantial_completion_date}</h4> 
-        <h4>Project Officer: ${this.project_officer}</h4> 
+        <h4>Contract Number: ${this.contractNumber}</h4> 
+        <h4>Solicitation Number: ${this.solicitationNumber}</h4> 
+        <h4>Start Date: ${this.projectStartDate}</h4> 
+        <h4>End Date: ${this.projectEndDate}</h4> 
+        <h4>Substantial Completion Date: ${this.substantialCompletionDate}</h4> 
+        <h4>Project Officer: ${this.projectOfficer}</h4> 
         <h4>Category: ${this.category}</h4> 
-        <h4>Contract Amount: ${this.contract_amount}</h4> 
+        <h4>Contract Amount: ${this.contractAmount}</h4> 
         <h4>Location: ${this.location}</h4>`
   }
 
